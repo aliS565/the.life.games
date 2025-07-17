@@ -161,14 +161,14 @@ function PasswordLoginBTN() {
       eyeIconSingUp.classList.add('fa-eye');
     }
   }
- function CloseSuccessForm() {
+function CloseSuccessForm() {
   // 1. ابدأ أنيميشن اختفاء SuccessForm لأعلى
   SuccessForm.classList.add('hide');
 
   // 2. بعد انتهاء الأنيميشن (1 ثانية)، اجعل MainSuccessForm height = 0
   setTimeout(() => {
-    MainSuccessForm.classList.add('hide');
-  }, 1000); // 
+    MainSuccessForm.style.height = '0';
+  }, 1000); // متزامن مع transition: 1s
 }
 
 CloseSuccessFormBtN.addEventListener('click', CloseSuccessForm);
