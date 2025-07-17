@@ -2192,7 +2192,6 @@ form .OrLoginSingUp p {
       pointer-events: none;
       opacity: 0.3;
       animation: moveStars 60s linear infinite;
-      z-index: -1;
     }
 
     @keyframes moveStars {
@@ -2220,6 +2219,7 @@ form .OrLoginSingUp p {
       font-size: 4rem;
       margin-top: 20px;
       animation: fadeIn 2s ease-in-out;
+      transition: all 0.3s ease;
     }
 
     @keyframes fadeIn {
