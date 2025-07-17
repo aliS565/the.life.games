@@ -23,17 +23,28 @@ var SuccessForm = document.querySelector('.SuccessForm');
 var MainSuccessForm = document.querySelector('.SuccessForm .Main-SuccessForm');
 var CloseSuccessFormBtN = document.getElementById('SuccessForm-Done-BTN');
 var NewButton = document.createAttribute('NuttonNew').style.display = 'flex';   
-let count = 10;
-    const countdownEl = document.getElementById("countdown");
- const countdownInterval = setInterval(() => {
-      count--;
-      countdownEl.textContent = count;
-      if (count === 0) {
-        clearInterval(countdownInterval);
-     countdown.style.transform = '-100%';
-          countdown.style.opacity = '0';
-      }
-    }, 1000);
+function createStar() {
+  const star = document.createElement('div');
+  star.classList.add('star');
+  star.style.left = `${Math.random() * 100}vw`;
+  star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+  document.querySelector('.stars').appendChild(star);
+  setTimeout(() => star.remove(), 3000);
+}
+setInterval(createStar, 100); // نجم جديد كل 0.1 ثانية
+
+let counter = 3;
+function startCountdown() {
+  const el = document.getElementById('countdown');
+  const interval = setInterval(() => {
+    counter--;
+    el.textContent = counter;
+    if (counter === 0) {
+      clearInterval(interval);
+      window.location.href = "Game.html"; // غيّر الصفحة حسب اسم لعبتك
+    }
+  }, 1000);
+}
 let i = 0;
 const flaotWidth = [...Array(101).keys()];
 const interval = setInterval(() => {
