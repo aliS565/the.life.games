@@ -257,22 +257,31 @@
             </div>
             <div class="NewButton">New Button</div>
            <script src="https://alis565.github.io/the.life.games/JavaScript.js"></script>
-         <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
+  <!-- Firebase App Check -->
+<script type="module">
+  // استيراد Firebase App Check
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyBnA0eYHQbR8gfrkjXn0mEtwSh0MCHJpfU",
-      authDomain: "thelifegamesvisitors.firebaseapp.com",
-      projectId: "thelifegamesvisitors",
-      storageBucket: "thelifegamesvisitors.appspot.com",
-      messagingSenderId: "452655494921",
-      appId: "1:452655494921:web:7a713d52f612e3724385d8",
-      measurementId: "G-M0FV9P25PP"
-    };
+  // firebaseConfig تبع مشروعك
+  const firebaseConfig = {
+    apiKey: "AIza....",           // من Firebase Console
+    authDomain: "....firebaseapp.com",
+    projectId: "....",
+    storageBucket: "....",
+    messagingSenderId: "...",
+    appId: "1:...:web:...",
+    measurementId: "G-..."
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
+  const app = initializeApp(firebaseConfig);
+
+  // 🛡️ تفعيل App Check باستخدام reCAPTCHA v3
+  const appCheck = initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('SITE_KEY_HERE'),  // 🔑 استبدلها بـ Site Key من Google
+    isTokenAutoRefreshEnabled: true // يجدد التوكين تلقائياً
+  });
+</script>
+
 </body>
 </html>
