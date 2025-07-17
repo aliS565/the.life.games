@@ -1911,6 +1911,9 @@ form .OrLoginSingUp p {
     outline: 4px solid rgba(240, 240, 240, 0.688);
    
 }
+.SuccessForm.hide {
+ animation: AnimSuccessFormHide 0.32s ease;
+}
 @keyframes AnimSuccessFormHide {
     0% {
         transform: translateY(0);
