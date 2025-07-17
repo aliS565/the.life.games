@@ -9,13 +9,56 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=stadia_controller" />
 <link rel="stylesheet" href='styleWebsite.css' Media='all'>
 <link rel='icon' href='image/Game_IC.png'>
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-97Y58KGXPB"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-97Y58KGXPB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-97Y58KGXPB');
 </script>
+   <script type="module">
+  // استيراد Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+  // إعدادات Firebase الخاصة بك
+  const firebaseConfig = {
+    apiKey: "XXXXXXX",
+    authDomain: "XXXXXXX.firebaseapp.com",
+    databaseURL: "https://XXXXXXX-default-rtdb.firebaseio.com",
+    projectId: "XXXXXXX",
+    storageBucket: "XXXXXXX.appspot.com",
+    messagingSenderId: "XXXXXXX",
+    appId: "XXXXXXX"
+  };
+
+  // تهيئة Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // تسجيل الزائر
+  function registerVisitor() {
+    const visitorsRef = ref(db, 'visitors');
+    push(visitorsRef, {
+      timestamp: new Date().toISOString()
+    });
+  }
+
+  // عرض عدد الزوار
+  function updateVisitorCount() {
+    const visitorsRef = ref(db, 'visitors');
+    onValue(visitorsRef, (snapshot) => {
+      const data = snapshot.val();
+      const count = data ? Object.keys(data).length : 0;
+      document.getElementById("visitor-count").textContent = count;
+    });
+  }
+
+  // تنفيذ الوظائف
+  registerVisitor();
+  updateVisitorCount();
+</script>
+
 </head>
 <body>
 <h2 style='position: sticky; top: 0; z-index: 1;'>Download All Games Here</h2>
@@ -58,5 +101,30 @@
             </div>
 </div>
 <script src="JavaScript.js" type="text/javascript"></script>
+  <script type="module">
+  // استيراد Firebase App Check
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
+
+  // firebaseConfig تبع مشروعك
+  const firebaseConfig = {
+    apiKey: "AIza....",           // من Firebase Console
+    authDomain: "....firebaseapp.com",
+    projectId: "....",
+    storageBucket: "....",
+    messagingSenderId: "...",
+    appId: "1:...:web:...",
+    measurementId: "G-..."
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+  // 🛡️ تفعيل App Check باستخدام reCAPTCHA v3
+  const appCheck = initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LebDIYrAAAAADZMITwQDoktArSchVfOD-VaAkyk'), 
+    isTokenAutoRefreshEnabled: true // يجدد التوكين تلقائياً
+  });
+</script>
+
 </body>
 </html>
