@@ -2019,6 +2019,10 @@ form .OrLoginSingUp p {
     transition: all 1s cubic-bezier(1, 0.15, 0.05, 1);
     overflow: hidden;
 }
+.Main-SuccessForm.hide {
+  max-height: 0;
+  padding: 0;
+}
 .SuccessForm .Main-SuccessForm img {
    display: flex;
     width: 80px;
