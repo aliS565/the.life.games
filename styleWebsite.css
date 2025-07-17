@@ -174,7 +174,7 @@ background: rgb(240,240,240, .26);
     letter-spacing: 1px;
     font-weight: bolder;
 }
- #BTN-MoreGame-Menu, #BTN-Refresh-Menu , #BTN-FormLoginSingUp-Menu {
+ #BTN-MoreGame-Menu, #BTN-Refresh-Menu , #BTN-FormLoginSingUp-Menu , #BTN-Privacy-Menu {
     width: 90%;
     height: 50px;
     background-color: transparent;
@@ -185,20 +185,20 @@ background: rgb(240,240,240, .26);
     justify-content: center;
     gap: 0;
 }
- #BTN-MoreGame-Menu span, #BTN-Refresh-Menu span, #BTN-FormLoginSingUp-Menu span {
+ #BTN-MoreGame-Menu span, #BTN-Refresh-Menu span, #BTN-FormLoginSingUp-Menu span , #BTN-Privacy-Menu span {
     font-size: 21px;
     font-weight: bold;
     width: 50%;
     text-align: left;
 }
-#BTN-MoreGame-Menu i, #BTN-Refresh-Menu i, #BTN-FormLoginSingUp-Menu i {
+#BTN-MoreGame-Menu i, #BTN-Refresh-Menu i, #BTN-FormLoginSingUp-Menu i , #BTN-Privacy-Menu i {
     font-size: 22px;
 }
-  #BTN-Exit-Menu:hover , #BTN-MoreGame-Menu:hover , #BTN-Refresh-Menu:hover  , #BTN-FormLoginSingUp-Menu:hover {
+  #BTN-Exit-Menu:hover , #BTN-MoreGame-Menu:hover , #BTN-Refresh-Menu:hover  , #BTN-FormLoginSingUp-Menu:hover , #BTN-Privacy-Menu:hover {
     background: rgba(240, 240, 240, 0.26);
     box-shadow: 0 0 5px white;
 }
-  #BTN-MoreGame-Menu:active , #BTN-Refresh-Menu:active , #BTN-Exit-Menu:active , #BTN-FormLoginSingUp-Menu:active {
+  #BTN-MoreGame-Menu:active , #BTN-Refresh-Menu:active , #BTN-Exit-Menu:active , #BTN-FormLoginSingUp-Menu:active , #BTN-Privacy-Menu:active {
     box-shadow: 0 0 5px white, inset 0 0 5px black;
     background: rgba(240, 240, 240, 0.36);
 }
@@ -646,6 +646,9 @@ opacity: 0;
     }
     #BTN-FormLoginSingUp {
         display: none;
+    }
+    #BTN-Privacy-Menu {
+        dispalay: none;
     }
     #BTN-Menu {
         display: flex;
