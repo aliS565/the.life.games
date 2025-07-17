@@ -2212,7 +2212,7 @@ form .OrLoginSingUp p {
       color: white;
       text-shadow: 2px 2px 10px black;
       font-size: 2rem;
-      z-index: 2;
+        z-index: 1001;
     }
 
     .countdown {
@@ -2220,7 +2220,7 @@ form .OrLoginSingUp p {
       margin-top: 20px;
       animation: fadeIn 2s ease-in-out;
       transition: all 0.3s ease;
-        z-index: 1001;
+     
     }
 
     @keyframes fadeIn {
