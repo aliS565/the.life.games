@@ -1,0 +1,2183 @@
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+font-family: Roboto, Arial, sans-serif;
+color: rgb(246, 246, 246);
+}
+html {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+body {
+background-image: url('image/MinBackground.png');
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+padding: 0;
+margin: 0;
+align-items: center;
+justify-content: center;
+display: flex;
+flex-wrap: wrap;
+height: auto;
+gap: 10px;
+scroll-behavior: smooth;
+}
+html::-webkit-scrollbar {
+    width: 12px;
+    background: rgb(50, 50, 50);
+  
+}
+
+html::-webkit-scrollbar-thumb {
+    background: rgb(103, 103, 103);
+    border-radius: 30px;
+}
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+html::-webkit-scrollbar-track-piece {
+    background: rgba(0, 0, 0, 0.46);
+}
+li {
+list-style: none;
+display: inline-block;
+width: max-content;
+height: max-content;
+}
+header {
+display: flex;
+width: 99%;
+height: 50px;
+align-items: center;
+justify-content: space-between;
+background: rgba(240, 240, 240, 0.26);
+box-shadow: 0 0 5px white;
+border-radius: 0 0 6px 6px;
+padding: 0 8px;
+z-index: 1000;
+}
+.MainLogo {
+display: inline-flex;
+align-items: center;
+justify-content: space-between;
+width: max-content;
+height: max-content;
+background:none;
+box-shadow: 0 0 5px rgb(255, 255, 255), inset 0 0 5px black;
+border-radius: 6px;
+padding: 2px;
+gap: 3px;
+cursor: pointer;
+}
+.MainLogo img {
+display: inline-flex;
+width: 40px;
+height: 40px;
+user-select: none;
+pointer-events: none;
+}
+.MainLogo span {
+font-size: 17px;
+font-weight: 550;
+}
+nav {
+display: flex;
+width: max-content;
+height: 100%;
+align-items: center;
+justify-content: space-between;
+gap: 10px;
+}
+.NavButton {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 5px;
+width: 140px;
+height: 30px;
+background: none;
+box-shadow: 0 0 5px rgb(0, 0, 0);
+border-radius: 30px;
+border: none;
+outline: none;
+text-decoration: none;
+font-size: 17px;
+font-weight: 550;
+cursor: pointer;
+transition: all 0.16s linear;
+word-spacing: -2.25px;
+letter-spacing: 0.25px;
+border: 2px solid rgba(240, 240, 240, 0.86);
+user-select: none;
+}
+.NavButton:hover {
+background: rgb(240,240,240, .26);
+}
+.NavButton:active {
+    background: rgb(240,240,240, .46);
+}
+#BTN-Menu {
+    display: none;
+}
+.Wrap-Menu {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.67);
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    z-index: 1001;
+    transition: all 0.2s linear;
+    animation: DropMenu 0.3s linear;
+    animation-duration: 500ms;
+}
+@keyframes DropMenu {
+   0% {
+    transform: translateY(-100%);
+    opacity: 0;
+   }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.Wrap-Menu .Top-Menu {
+    display: flex;
+    width: 100%;
+    height: 12%;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.16s linear;
+    border-radius: 0 0 10px 10px;
+}
+.Wrap-Menu .Top-Menu:hover  > span{
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.413);
+}
+.Wrap-Menu .Top-Menu span {
+    transition: all 0.16s linear;
+    color: black;
+    font-size: 36px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+}
+ #BTN-MoreGame-Menu, #BTN-Refresh-Menu , #BTN-FormLoginSingUp-Menu {
+    width: 90%;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 4px solid rgb(255, 255, 255);
+    box-shadow: 0 0 5px black;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+ #BTN-MoreGame-Menu span, #BTN-Refresh-Menu span, #BTN-FormLoginSingUp-Menu span {
+    font-size: 21px;
+    font-weight: bold;
+    width: 50%;
+    text-align: left;
+}
+#BTN-MoreGame-Menu i, #BTN-Refresh-Menu i, #BTN-FormLoginSingUp-Menu i {
+    font-size: 22px;
+}
+  #BTN-Exit-Menu:hover , #BTN-MoreGame-Menu:hover , #BTN-Refresh-Menu:hover  , #BTN-FormLoginSingUp-Menu:hover {
+    background: rgba(240, 240, 240, 0.26);
+    box-shadow: 0 0 5px white;
+}
+  #BTN-MoreGame-Menu:active , #BTN-Refresh-Menu:active , #BTN-Exit-Menu:active , #BTN-FormLoginSingUp-Menu:active {
+    box-shadow: 0 0 5px white, inset 0 0 5px black;
+    background: rgba(240, 240, 240, 0.36);
+}
+.Wrap-Menu #BTN-Exit-Menu {
+    width: 90%;
+    height: 50px;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    border: 4px solid rgb(255, 255, 255);
+    box-shadow: 0 0 5px black;
+    font-size: 18px;
+    align-items: center;
+    justify-content: space-around;
+    word-spacing: 5px;
+    position: absolute;
+    bottom: 10px;
+}
+h2{
+width: 100%;
+max-width: 1200px;
+text-align: center;
+margin: 6px;
+background:  rgb(240,240,240, 0.3);
+border-radius: 6px;
+padding: 6px;
+cursor: pointer;
+border: 3px solid  rgba(240, 240, 240, 0.26);
+box-shadow: 0 0 10px  rgb(255, 255, 255);
+transition: all 0.2s linear;
+}
+.MainGame {
+display: flex;
+width: 100%;
+height: 500px;
+margin: 10px;
+max-width: 1280px;
+align-items: flex-start;
+justify-content: flex-start;
+background: rgb(240,240,240, .26);
+border: 3px solid white;
+position: relative;
+flex-wrap: wrap;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 0 15px  rgb(240,240,240), inset 0 0 8px black;
+}
+.MainGame::before {
+content: 'لعبة الألعاز';
+display: flex;
+width: max-content;
+height: max-content;
+padding: 5px;
+background: rgb(240,240,240);
+position: absolute;
+top: -15px;
+left: -75px;
+margin: auto;
+border-radius: 6px;
+justify-content: center;
+align-items: center;
+font-size: 17px;
+font-weight: bold;
+}
+ .tutorialBox {
+display: flex;
+width: 100%;
+height: 100%;
+align-items: flex-start;
+justify-content: center;
+border-radius: inherit;
+flex-wrap: wrap;
+padding: 8px;
+transition: all 0.36s linear;
+transition-delay: 0.05s;
+}
+p {
+font-size: 25px;
+font-weight: bold;
+text-align: center;
+padding: 8px;
+letter-spacing: 0.5px;
+word-spacing: -1px;
+padding: 10px 20px;
+}
+.NextPage {
+display: flex;
+width: 50px;
+height: 40%;
+background: rgb(240,240,240, 0.26);
+border: 2px solid white;
+position: absolute;
+right: 6px;
+top: 0;
+bottom: 0;
+margin: auto;
+border-radius: 0 6px 6px 0;
+color: rgb(0, 0, 0);
+text-align: center;
+align-items: center;
+justify-content: center;
+font-size: 36px;
+font-weight: bolder;
+transition: all 0.3s linear;
+animation: LoopNextPage 0.3s linear;
+box-shadow: inset 0 0 8px black, 0 0 5px black;
+cursor: pointer;
+}
+.NextPage:hover {
+background: rgba(240,240,240, 0.46);
+}
+
+.NextPage:active {
+background: rgba(240,240,240, 0.56);
+color: rgb(240,240,240, 0.26);
+border-color: rgb(240,240,240, 0.26);
+}
+@keyframes LoopNextPage {
+0% {
+background: rgb(240,240,240);
+}
+50% {
+background: rgba(240,240,240, 0.26);
+}
+100% {
+background: rgb(240,240,240)
+}
+}
+.KeyControll {
+display: flex;
+width: 50%;
+height: 25%;
+background: none;
+position: absolute;
+bottom: 0;
+margin: auto;
+align-items: center;
+justify-content: center;
+gap: 5px;
+flex-direction: column;
+}
+.FakeColumn {
+display: inline-flex;
+width: 100%;
+height:max-content;
+align-items: center;
+justify-content: center;
+background: none;
+gap: 5px;
+}
+.KeyBTN {
+display: flex;
+width: 40px;
+height: 40px;
+background: rgb(240,240,240);
+box-shadow: 0 0 8px rgb(0, 0, 0), inset 0 0 15px black;
+border-radius: 6px;
+color: black;
+font-size: 25px;
+font-weight: bold;
+align-items: center;
+justify-content: center;
+user-select: none;
+cursor: pointer;
+transition: all 0.3s linear;
+transform: skewX(-10deg);
+}
+.KeyBTN:hover {
+background: rgb(250,250,250, 0.76);
+}
+.KeyBTN:active {
+transform: scale(0.95);
+}
+.MouseBTN {
+display: flex;
+width: 60px;
+height: 110px;
+border-radius: 100%;
+background:rgb(240,240,240);
+box-shadow: 0 0 3px white, inset 0 0 8px rgb(240,240,240), inset 0 -10px black;
+outline: 2px solid rgb(65,65,65);
+align-items: flex-start;
+justify-content: center;
+overflow: hidden;
+flex-wrap: wrap;
+transform: skew(-10deg);
+}
+.MouseBTN .keyMouseL , .keyMouseR {
+width: 50%;
+height: 50%;
+background: linear-gradient(45deg,rgb(65,65,65),black);
+box-shadow: 0 0 5px rgb(65,65,65);
+transition: all 0.3s linear;
+cursor: pointer;
+}
+.MouseBTN .keyMouseL:hover , .keyMouseR:hover {
+opacity: 0.99;
+}
+.MouseBTN .keyMouseL:active , .keyMouseR:active {
+background: linear-gradient(-45deg,rgb(65,65,65),black);
+}
+.MouseBTN span {
+color: rgb(65,65,65);
+font-size: 12px;
+font-weight: bold;
+margin-bottom: 11.50px;
+transform: skewX(-10deg);
+user-select: none;
+text-shadow: 0 0 5px rgb(65,65,65);
+}
+.GameView {
+display: flex;
+width: 100%;
+height: 100%;
+background: none;
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+margin: auto;
+transform: translateX(100%);
+transition: all 0.36s linear;
+transition-delay: 0.05s;
+overflow: hidden;
+}
+.GameView video {
+width: 100%;
+height: 100%;
+object-fit: fill;
+}
+.GameView .LoadingCRL {
+display: flex;
+width: 65px;
+height: 65px;
+background: transparent;
+border: 2px solid #ccc;
+align-items: center;
+justify-content: center;
+position: absolute;
+right: 5%;
+bottom: 5%;
+transition: all 0.3s linear;
+transition-delay: 0.05s;
+box-shadow: 0 0 5px white, inset 0 0 8px white;
+border-radius: 6px;
+}
+.GameView .LoadingCRL::after {
+content: '';
+display: block;
+width: 35px;
+height: 35px;
+border-style: solid;
+border-width: 6px;
+border-color: darkgray darkgray darkgray darkgray;
+border-radius: 10px;
+transition: all 0.3s linear;
+transition-delay: 0.05s;
+animation: LoadCRL 3s infinite;
+background: darkgray;
+box-shadow: 0 0 15px darkgray, inset 0 0 8px black;
+}
+@keyframes LoadCRL {
+0% {
+border-color: darkgray darkgray darkgray darkgray;
+}
+10% {
+border-color: white darkgray darkgray darkgray;
+}
+20% {
+border-color: white white darkgray darkgray;
+}
+30% {
+border-color: white white white darkgray;
+}
+40% {
+border-color: white white white white;
+}
+50% {
+border-color: darkgray white white white;
+}
+60% {
+border-color: darkgray darkgray white white;
+}
+70% {
+border-color: darkgray darkgray darkgray white;
+}
+80% {
+border-color: white white white white;
+}
+100% {
+border-color: darkgray darkgray darkgray darkgrays;
+}
+}
+.GameView .LoadingCRL .LoadTXT {
+font-size: 12px;
+font-weight: bold;
+color: white;
+text-shadow: 0 0 5px white;
+position: absolute;
+margin: auto;
+background: rgb(0,0,0, 0.56);
+box-shadow: 0 0 10px black , inset 0 0 5px white;
+width: max-content;
+height: max-content;
+border-radius: 3px;
+padding: 1px;
+user-select: none;
+}
+.GameView .BackTo-tutorialBox {
+display: flex;
+width: 45px;
+height: 45px;
+background: transparent;
+border: 2px solid #ccc;
+align-items: center;
+justify-content: center;
+position: absolute;
+right: 2%;
+top: 2%;
+transition: all 0.3s linear;
+transition-delay: 0.05s;
+box-shadow: 0 0 5px white, inset 0 0 8px white;
+border-radius: 3px;
+cursor: pointer;
+} 
+.GameView .BackTo-tutorialBox .BackTo-BG {
+display: flex;
+width: 100%;
+height: 100%;
+position: relative;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+.GameView .BackTo-tutorialBox .BackTo-BG  p {
+color: rgb(240,240,240);
+font-size: 12px;
+font-weight: bold;
+text-shadow: 0 0 8px white;
+opacity: 0;
+transition: all 0.3s linear;
+transition-delay: 0.05s;
+user-select: none;
+}
+.GameView .BackTo-tutorialBox .BackTo-BG span {
+display: inline-block;
+width: 2px;
+height: 85%;
+border-radius: 3px;
+background: darkgray;
+transform: rotate(45deg);
+box-shadow: 0 0 20px white, inset 0 0 8px white;
+transition: all 0.34s linear;
+transition-delay: 0.05s;
+margin: 10px
+}
+.GameView .BackTo-tutorialBox .BackTo-BG .span-1 {
+transform: rotate(45deg);
+position: absolute;
+}
+.GameView .BackTo-tutorialBox .BackTo-BG .span-2 {
+transform: rotate(-45deg);
+position: absolute;
+}
+
+.GameView .BackTo-tutorialBox:hover > .BackTo-BG .span-1 {
+opacity: 0;
+}
+.GameView .BackTo-tutorialBox:hover > .BackTo-BG .span-2 {
+opacity: 0;
+}
+.GameView .BackTo-tutorialBox:active > .BackTo-BG .span-1 {
+opacity: 1;
+scale: 0.8;
+}
+.GameView .BackTo-tutorialBox:active > .BackTo-BG .span-2 {
+opacity: 1;
+scale: 0.8;
+}
+
+.GameView .BackTo-tutorialBox:hover > .BackTo-BG p {
+opacity: 1;
+text-shadow: 0 0 10px white;
+}
+.GameView .BackTo-tutorialBox:active > .BackTo-BG p {
+opacity: 0;
+}
+@media screen and (max-width: 1000px) {
+    .BoxDownPage {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+    header {
+        position: sticky;
+        top: 5px;
+    }
+
+}
+@media screen and (max-width: 700px) {
+ header {
+    padding: 0 3px;
+ }
+.MainLogo {
+    width: max-content;
+    height: max-content;
+    padding: 5px auto;
+}
+
+.MainLogo img  {
+    width: 30px;
+    height: 30px;
+}
+.MainLogo span {
+    width: max-content;
+    height: max-content;
+    padding: 0;
+    font-size: 16px;
+}
+ nav {
+    gap:  3px;
+    padding: 0;
+ }
+.NavButton {
+    font-size: 16px;
+}
+.Wrap-Menu {
+    display: none;
+}
+#BTN-Menu {
+    display: none;
+}
+}
+@media screen and (max-width: 680px) {
+    #BTN-MoreGame {
+        display: flex;
+    }
+    #BTN-FormLoginSingUp {
+        display: flex;
+    }
+}
+@media screen and (max-width: 660px) {
+    #BTN-MoreGame {
+        display: none;
+    }
+    #BTN-FormLoginSingUp {
+        display: none;
+    }
+    #BTN-Menu {
+        display: flex;
+    }
+}
+@media screen and (max-width: 550px) {
+    #BTN-MoreGame , #BTN-Refresh {
+        display: none;
+    }
+   
+    .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .BTN-Scroll {
+        width: max-content;
+        height: max-content;
+    }
+    .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .BTN-Scroll i{
+       font-size: 16px;
+    }
+    .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame {
+        font-size: 15px;
+        padding: 3px;
+    }
+    .SuccessForm .Main-SuccessForm .TrueOrFalse-Text {
+        padding: 0;
+    }
+}
+@media screen and (max-width: 400px) {
+   header .NavButton {
+    width: max-content;
+    height: max-content;
+    padding: 5px;
+    font-size: 16px;
+   }
+   .MainLogo {
+   width: max-content;
+   height: max-content;
+   padding: 2px;
+   gap: 0px;
+   justify-content: space-between;
+   }
+   .MainLogo span {
+    font-size: 16px;
+   }
+    .WrapDownPage .BoxDownPage .LF-GM-Box .Details-GM-Box .Bar-GM-Box {
+        padding: 5px;
+        justify-content: flex-start;
+        align-items: center;
+    }
+   
+   
+}
+@media screen and (max-width: 350px) {
+   
+}
+.Games-Wrap {
+display: flex;
+width: 100%;
+height: auto;
+align-items: flex-start;
+align-content: flex-start;
+justify-content: center;
+position: relative;
+gap: 20px;
+padding: 30px;
+flex-wrap: wrap;
+background: none;
+margin: 0;
+}
+.Game-Bord {
+display: flex;
+width: 375px;
+height: 425px;
+background:  rgb(240,240,240, 0.26);
+align-items: flex-start;
+justify-content: space-between;
+flex-direction: column;
+border-radius: 6px;
+box-shadow: 0 0 8px  rgb(240,240,240);
+transition: all 0.3s linear;
+border: 2px solid   rgb(240,240,240, 0.26);
+overflow: hidden;
+margin: 0;
+}
+.Game-Bord .Top-GMB {
+display: flex;
+width: 100%;
+height: 50px;
+align-items: center;
+justify-content: space-between;
+background: none;
+padding: 5px 15px;
+}
+.Game-Bord .Top-GMB .GM-IC-TXT {
+display: flex;
+width: max-content;
+height: 100%;
+padding: 5px;
+align-items: center;
+justify-content: space-between;
+gap: 3px;
+user-select: none;
+cursor: pointer;
+border-radius: 6px;
+transition: all 0.3s linear;
+}
+.Game-Bord .Top-GMB .GM-IC-TXT:hover {
+box-shadow: 0 0 3px white, inset 0 0 5px white;
+}
+.Game-Bord .Top-GMB .GM-IC-TXT:active {
+transform: scale(0.97);
+box-shadow: 0 0 3px white, inset 0 0 8px white;
+}
+.Game-Bord .Top-GMB .GM-IC-TXT img {
+display: inline-block;
+width: 35px;
+height: 35px;
+pointer-events: none;
+}
+.Game-Bord .Top-GMB .GM-IC-TXT span {
+font-size: 16px;
+font-weight: bold;
+word-spacing: -2px;
+letter-spacing: 0.15px;
+}
+.Game-Bord .Top-GMB .GM-TLS-CLS {
+display: flex;
+width: max-content;
+height: 100%;
+padding: 5px;
+align-items: center;
+justify-content: space-between;
+gap: 8px;
+user-select: none;
+}
+.Game-Bord .Top-GMB .GM-TLS-CLS .BTN-TLS-CLS {
+display: flex;
+width: 30px;
+height: 30px;
+background: none;
+border-radius: 50%;
+cursor: pointer;
+transition: all 0.2s linear;
+align-items: center;
+justify-content: center;
+font-size: 17px;
+color: rgb(240,240,240, .85);
+border: 2px solid rgb(240,240,240, .56);
+position: relative;
+overflow: hidden;
+}
+.Game-Bord .Top-GMB .GM-TLS-CLS .BTN-TLS-CLS:hover {
+background: rgb(240,240,240, .26);
+box-shadow: 0 0 5px white;
+}
+.Game-Bord .Top-GMB .GM-TLS-CLS .BTN-TLS-CLS:active {
+box-shadow: 0 0 3px white, inset 0 0 5px white;
+background: rgb(240,240,240, .46);
+box-shadow: 0 0 5px white, inset 0 0 2px black;
+}
+.Game-Bord .Top-GMB .GM-TLS-CLS .BTN-TLS-CLS i {
+    transition: all 0.30s linear;
+}
+.Game-Bord .Top-GMB .GM-TLS-CLS .BTN-TLS-CLS:hover > i {
+    opacity: 0;
+}
+.Game-Bord .Top-GMB .GM-TLS-CLS .BTN-TLS-CLS span {
+    display: inline-flex;
+    width: 0%;
+    height: 0%;   
+    background: transparent;
+    text-shadow: 0 0 3px black;
+    font-size: 8px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    background-attachment: fixed;
+    overflow: hidden;
+    transition: all 0.30s linear;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.67);
+    border-radius: 50%;
+}
+.Game-Bord .Top-GMB .GM-TLS-CLS .BTN-TLS-CLS:hover > span {
+   width: 100%;
+   height: 100%;
+}
+.Game-Bord .Top-GMB .GM-TLS-CLS .BTN-TLS-CLS:active > span {
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.67) , inset 0 0 2px rgba(0, 0, 0, 0.67);
+}
+.Game-Bord .Main-GMB {
+display: flex;
+width: 100%;
+height: 100%;
+align-items: flex-start;
+justify-content: flex-start;
+flex-wrap: wrap;
+position: relative;
+overflow: hidden;
+background: none;
+}
+.Game-Bord .Main-GMB:hover > .GM-DTLS {
+transform: translateY(0%);
+background: rgb(0,0,0, 0.45);
+}
+.Game-Bord .Main-GMB video {
+display: inline-block;
+width: 100%;
+height: 100%;
+object-fit: fill;
+}
+.Game-Bord .Main-GMB .GM-DTLS {
+display: flex;
+width: 100%;
+height: 100%;
+align-items: flex-start;
+justify-content: flex-start;
+flex-direction: column;
+position: absolute;
+transform: translateY(100%);
+margin: auto;
+transition: all 0.3s cubic-bezier(0.8, 0, 0, 0.5);
+
+background: none;
+pointer-events: stroke;
+padding: 8px;
+gap: 10px;
+cursor: pointer;
+}
+.Game-Bord .Main-GMB .GM-DTLS:active {
+box-shadow: inset 0 0 10px white;
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-Top-DTLS {
+display: flex;
+width: 100%;
+height: max-content;
+align-items: center;
+justify-content: space-between;
+
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-Top-DTLS .GM-TXT {
+display: inline-flex;
+font-size: 14px;
+font-weight: bold;
+background: rgb(35,35,35);
+box-shadow: 0 0 5px white;
+padding: 5px;
+border-radius: 8px;
+user-select: none;
+text-shadow: 0 0 15px black;
+gap: 3px;
+justify-content: space-around;
+align-items: center;
+letter-spacing: 0.15px;
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-Top-DTLS .GM-IntDownloads {
+display: inline-flex;
+width: max-content;
+height: max-content;
+padding: 5px;
+background: rgb(35,35,35);
+box-shadow: 0 0 5px white;
+padding: 5px;
+border-radius: 8px;
+user-select: none;
+gap: 2px;
+justify-content: space-around;
+align-items: center;
+
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-Top-DTLS .GM-IntDownloads span {
+text-shadow: 0 0 15px black;
+letter-spacing: 0.15px;
+font-weight: bold;
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-More {
+text-align: left;
+width: 100%;
+display: flex;
+padding: 0;
+font-size: 17px;
+font-weight: bold;
+text-shadow: 0 0 10px black;
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-About {
+display: flex;
+width: 100%;
+height: max-content;
+background: none;
+align-items: center;
+justify-content: space-between;
+position: absolute;
+bottom: 0;
+padding-bottom: 15px;
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-About .GM-SWC{
+display: flex;
+width: 50%;
+height: 100%;
+flex-direction: column;
+align-items: left;
+justify-content: center;
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-About .GM-SWC .One-TXT, .Two-TXT {
+font-weight: bold;
+text-shadow: 0 0 15px black;
+letter-spacing: 0.25px;
+word-spacing: -1px;
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-About .GM-SWC .One-TXT {
+    color: rgb(220, 220, 220);
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-About .GM-SWC .Two-TXT {
+padding: 0 2px;
+}
+.Game-Bord .Bottom-GMB {
+display: flex;
+width: 100%;
+height: 50px;
+align-items: center;
+justify-content: space-around;
+background: none;
+
+}
+.Game-Bord .Bottom-GMB .BTN-SNF , .BTN-SNF-DWN  {
+display: inline-flex;
+width: 100%;
+height: 100%;
+align-items: center;
+justify-content: space-around;
+user-select: none;
+cursor: pointer;
+transition: all 0.12s linear;
+font-weight: bold;
+text-decoration: none;
+}
+.Game-Bord .Bottom-GMB .BTN-SNF {
+    text-shadow: 0 0 5px black;
+}
+.Game-Bord .Bottom-GMB .BTN-SNF-DWN {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.26);
+}
+.Game-Bord .Bottom-GMB .BTN-SNF:hover , .BTN-SNF-DWN:hover {
+opacity: 0.9;
+}
+.Game-Bord .Bottom-GMB .BTN-SNF:active , .BTN-SNF-DWN:active {
+box-shadow: inset 0 0 5px black;
+opacity: 1;
+}
+
+.Game-Bord .Bottom-GMB .BTN-SNF:active > i {
+text-shadow: 0 0 8px black;
+box-shadow: inset 0 0 8px white;
+}
+.Game-Bord .Bottom-GMB .BTN-SNF-DWN {
+background: white;
+color: black;
+} 
+.Game-Bord .Bottom-GMB .BTN-SNF i, .BTN-SNF-DWN i {
+transition: all 0.12s linear;
+}
+.Game-Bord .Bottom-GMB .BTN-SNF-DWN:active > i {
+text-shadow: 0 0 8px white;
+box-shadow: inset 0 0 8px black;
+}
+.Game-Bord .Bottom-GMB .BTN-SNF-DWN i {
+border-radius: 50%;
+}
+.Game-Bord .Bottom-GMB .BTN-SNF i {
+display: inline-flex;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+border: 2px solid white;
+font-size: 14px;
+align-items: center;
+justify-content: center;
+}
+.WrapDownPage {
+    display: flex;
+    width: 97%;
+    height: auto;
+    background: rgba(240, 240, 240, 0.26);
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    transition: all 0.3s linear;
+    box-shadow: 0 0 15px black, inset 0 0 8px black;
+    margin-bottom: 20px;
+}
+.WrapDownPage .TopDownPage {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    font-size: 24px;
+    font-weight: bold;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 6px;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 5px black;
+    box-shadow: 0 0 5px black;
+}
+.WrapDownPage .BoxDownPage {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 6px;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 10px black;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    background:none;
+    gap: 10px;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .Details-GM-Box {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 5px;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .Details-GM-Box .Bar-GM-Box {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    padding: 5px 25px;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor: pointer;
+    background: rgba(240,240,240, 0.26);
+    border: 2px solid rgba(240,240,240, 0.26);
+    border-radius: 6px;
+    transition: all 0.16s linear;
+    box-shadow: 0 0 5px black;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .Details-GM-Box .Bar-GM-Box:hover {
+    background: rgba(240,240,240, 0.32);
+    box-shadow: 0 0 5px black , inset 0 0 5px black;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .Details-GM-Box .Bar-GM-Box:active {
+    background: rgba(240,240,240, 0.36);
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .Details-GM-Box .Bar-GM-Box .DT-Span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(245, 245, 245a);
+    gap: 5px;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .Details-GM-Box .Bar-GM-Box span {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.25px;
+    word-spacing: -2px;
+    text-shadow: 0 0 10px black;
+    user-select: none;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC {
+    display: flex;
+    width: 55px;
+    height: 55px;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 6px;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.16s linear;
+    user-select: none;
+    text-shadow: 0 0 5px black;
+    text-decoration: none;
+    color: rgb(240,240,240);
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC i {
+    font-size: 22px;
+    text-shadow: 0 0 5px black;
+    transition: all 0.16s linear;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC img {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    transition: all 0.16s linear;
+    position: relative;
+    pointer-events: none;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC span {
+    font-size: 9px;
+    font-weight: bold;
+    position: absolute;
+    bottom: -100%;
+    opacity: 0;
+    transition: all 0.16s linear;
+    letter-spacing: 0.25px;
+    word-spacing: -1px;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC:hover {
+    box-shadow: 0 0 5px black, inset 0 0 5px black;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC:active {
+    box-shadow: 0 0 5px black, inset 0 0 10px black;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC:hover > img {
+    transform: translateY(-15%);
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC:hover > i {
+    transform: translateY(-15%);
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC:hover > span {
+    bottom: 10%;
+    opacity: 1;
+}
+.WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC:active > span {
+    transform: scale(0.95);
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Title-GM-Box {
+    display: flex;
+    width: 90%;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    word-spacing: -2px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 5px black;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 6px;
+    border: 2px solid rgba(240,240,240, 0.26);
+    border-radius: 6px;
+    box-shadow: 0 0 5px black;
+    padding: 5px;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 650px;
+    background: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 5px;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video {
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .Video-GM-Box {
+    display: flex;
+    width: 400px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: none;
+}
+
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .Video-GM-Box video {
+    display: auto;
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px black;
+    object-fit: fill;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    outline: none;
+    cursor: pointer;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .BTN-Scroll {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 50%;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 5px black;
+    transition: all 0.16s linear;
+    text-shadow: 0 0 5px black;
+    font-weight: bold;
+    font-size: 26px;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .BTN-Scroll:hover {
+    box-shadow: 0 0 5px black, inset 0 0 5px black;
+}.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .BTN-Scroll:active {
+    box-shadow: 0 0 8px black, inset 0 0 5px black;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video #LF-Scroll:hover {
+  transform: translateX(-5px);
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video #LF-Scroll:active {
+    transform: translateX(-8px);
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video #RG-Scroll:hover {
+    transform: translateX(5px);
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video #RG-Scroll:active {
+    transform: translateX(8px);
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    background-color: none;
+    align-items: center;
+    justify-content: space-around;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom  .Scroll-Slider-Buttons {
+    display: flex;
+    width: 50%;
+    height: max-content;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 6px;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    box-shadow: 0 0 10px black;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .Scroll-Slider-Buttons .BTN-ELM-SLD {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 3px;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s linear;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .Scroll-Slider-Buttons .BTN-ELM-SLD:hover {
+    box-shadow: 0 0 8px black, inset 0 0 3px black;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .Scroll-Slider-Buttons .BTN-ELM-SLD:active {
+    box-shadow: 0 0 8px black, inset 0 0 5px black;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 10px;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 0 5px black;
+    transition: all 0.16s linear;
+    cursor: pointer;
+    user-select: none;
+    text-shadow: 0 0 2px black;
+    gap: 5px;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame:hover {
+    background: rgba(240, 240, 240, 0.36);
+    box-shadow: 0 0 5px black, inset 0 0 3px black;
+    text-shadow: 0 0 3px black;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame:active {
+    box-shadow: 0 0 8px rgb(0, 0, 0), inset 0 0 5px black;
+    text-shadow: 0 0 5px black;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame:hover > span::before {
+    box-shadow: 0 0 3px rgb(0, 0, 0), inset 0 0 3px black;
+} 
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame:active > span::before {
+    box-shadow: 0 0 5px black, inset 0 0 5px black;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame i {
+    transition: all 0.16s linear;
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame span {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: all 0.16s linear;
+    letter-spacing: 0.75px;
+
+}
+.WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame span::before {
+    content: '';
+    display: flex;
+    width: 16px;
+    height: 16px;
+    background: rgba(240, 240, 240, 0.26);
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    border-radius: 2px 2px 50% 50%;
+    box-shadow: 0 0 2px black;
+    transition: all 0.16s linear;
+    user-select: none;
+    pointer-events: none;
+}
+.WrapDownPage .P-GM-Page {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 3px;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    flex-wrap: wrap;
+    box-shadow: 0 0 5px black;
+}
+
+.WrapDownPage .P-GM-Page p {
+  display: inline-flex;
+  width: 100%;
+  height: auto;
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.75px;
+  word-spacing: -1px;
+  text-shadow: 0 0 3px black;
+  padding: 0;
+  color: rgb(240,240,240);
+  user-select: none;
+}
+.WrapDownPage .Comment-GM-Page {
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 8px;
+    margin: 0;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 3px;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    box-shadow: 0 0 5px black;
+}
+.FormBoxLogin  , .FormBoxSingUp {
+    display: none;
+    width: 400px;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(-70deg,rgba(240, 240, 240, 0.26),rgba(0, 0, 0, 0.36));
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    border: 6px solid rgba(240, 240, 240, 0.26);
+    border-radius: 30px;
+    box-shadow: 0 0 25px black;
+    padding: 15px;
+    gap: 5px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all 0.30s linear , 0.40s linear;
+    outline: none;
+    backdrop-filter: blur(5px);
+    animation: DropFormLoginSingUp 0.3s linear;
+}
+@keyframes  DropFormLoginSingUp {
+   0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+  100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+ .TopTitleAndExitForm {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: none;
+    padding: 0;
+}
+.TopTitleAndExitForm p {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    word-spacing: -4.5px;
+    text-shadow: 0 0 15px 5px rgb(0, 0, 0);
+    user-select: none;
+}
+.TopTitleAndExitForm .CloseForm {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(240, 240, 240, 0.16);
+    border: 3px solid rgb(240,240,240, .26);
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+    font-size: 21px;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    text-shadow: 0 0 3px black;
+    color: rgba(240, 240, 240, 0.96);
+    transition: all 0.26s linear;
+    user-select: none;
+}
+ .TopTitleAndExitForm .CloseForm:hover {
+    background-color: rgb(240,240,240, .46);
+    border-color: rgba(240, 240, 240, .46);
+    text-shadow: 0 0 5px black;
+    box-shadow: 0 0 8px black;
+}
+ .TopTitleAndExitForm .CloseForm:active {
+    background-color: rgb(240,240,240, .16);
+    border-color: rgba(240, 240, 240, .16);
+    text-shadow: 0 0 3px black;
+    box-shadow: 0 0 5px black;
+}
+ form {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    gap: 8px;
+}
+ form .BoxInputForm {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+ form .BoxInputForm label {
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 0 1.5px black;
+    word-spacing: -1.5px;
+    user-select: none;
+}
+ form .BoxInputForm .BoxInput {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgba(255, 255, 255, 0.26);
+    border-radius: 30px;
+    padding: 0;
+    box-shadow: 0 0 10px black;
+    position: relative;
+    overflow: hidden;
+}
+ form .BoxInputForm .BoxInput .IC-INPUT {
+    display: flex;
+    width: 30px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background:transparent;
+    border-radius: 30px 0 0 30px;
+    cursor: pointer;
+    text-shadow: 0 0 3px black;
+}
+ form .BoxInputForm .BoxInput input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    caret-color: rgb(255, 255, 255);
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 3px black;
+    letter-spacing: 0.5px;
+    transition: all 0.30s linear;
+    cursor: pointer;
+}
+ form .BoxInputForm .BoxInput input::placeholder {
+    color: rgb(241, 241, 241);
+    word-spacing: -1.5px;
+    text-shadow: 0 0 3px black;
+    font-weight: bold;
+    transition: all 0.30s linear, 0.1s linear;
+    user-select: none;
+}
+form .BoxInputForm .BoxInput::after {
+    content: '';
+    display: flex;
+    width: 80%;
+    height: 2px;
+    border-radius: 30px;
+    background:rgba(255, 255, 255, 0.86);
+    position: absolute;
+    bottom: 3px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    transition: all 0.30s linear, 0.32s linear;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.26);
+}
+ form .BoxInputForm .BoxInput:hover::after {
+    transform: scaleX(80%);
+    bottom: -100%;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.26), inset 0 0 2px black;
+}
+ 
+ form .BoxInputForm .BoxInput .IC-Inupt-BTN {
+    display: flex;
+    width: 28px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background:transparent;
+    border-radius:  0 30px 30px 0;
+    cursor: pointer;
+    text-shadow: 0 0 3px black;
+    transition: all 0.30s linear;
+}
+form .BoxInputForm .BoxInput .IC-Inupt-BTN i {
+    transition: all 0.30s linear;
+    border-radius: 50%;
+}
+form .BoxInputForm .BoxInput .IC-Inupt-BTN:hover {
+    background: rgba(240, 240, 240, 0.26);
+}
+form .BoxInputForm .BoxInput .IC-Inupt-BTN:active {
+    background: rgba(240, 240, 240, .36);
+}
+
+ form .ButtonForm {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    align-items: center;
+    justify-content: space-around;
+}
+ form .ButtonForm button[type="reset"] {
+    display: flex;
+    width: 80px;
+    height: 30px;
+    border-radius: 8px;
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgba(240, 240, 240, 0.26);
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    color: rgba(240, 240, 240, 0.96);
+    text-shadow: 0 0 1.5px black;
+    font-weight: bold;
+    box-shadow: 0 0 5px black;
+    transition: all 0.3s linear;
+    user-select: none;
+}
+ form .ButtonForm button[type="reset"]:hover {
+    box-shadow: 0 0 5px black , inset 0 0 5px black;
+}
+ form .ButtonForm button[type="reset"]:active {
+    box-shadow: 0 0 3px black , inset 0 0 3px black;
+}
+ form .ButtonForm button[type="submit"] {
+    display: flex;
+    width: 50%;
+    height: 30px;
+    border-radius: 30px;
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgba(240, 240, 240, 0.26);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(240, 240, 240, 0.96);
+    text-shadow: 0 0 1.5px black;
+    font-weight: bolder;
+    box-shadow: 0 0 5px black;
+    transition: all 0.3s linear;
+    user-select: none;
+    gap: 15px;
+}
+ form .ButtonForm button[type="submit"]:hover {
+    box-shadow: 0 0 5px black , inset 0 0 5px black;
+}
+ form .ButtonForm button[type="submit"]:active {
+    box-shadow: 0 0 3px black , inset 0 0 3px black;
+}
+
+form .BoxInputForm-Gn {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form .BoxInputForm-Gn .Title-Gender {
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 0 1.5px black;
+    word-spacing: -1.5px;
+    user-select: none;
+}
+
+form .BoxInputForm-Gn .BoxInput-Gn {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+form .BoxInputForm-Gn .BoxInput-Gn .Gn-Input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: max-content;
+    height: 30px;
+    padding: 10px 15px;
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgba(240, 240, 240, 0.26);
+    box-shadow: 0 0 8px black;
+    border-radius: 30px;
+    backdrop-filter: blur(2px); 
+    transition: 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+form .BoxInputForm-Gn .BoxInput-Gn .Gn-Input .Gn-Box {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    background: transparent; 
+}
+
+
+form .BoxInputForm-Gn .BoxInput-Gn .Gn-Input .Gn-Box .LabelGender {
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 0 1.5px black;
+    word-spacing: -1.5px;
+    user-select: none;   
+}
+
+form .Gn-Input input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  form .Gn-Input .custom-radio {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(240, 240, 240, 0.8);
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 3px black;
+    background-color: transparent;
+  }
+
+  form .Gn-Input input[type='radio']:checked + .custom-radio::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 70%;
+    height: 70%;
+    background-color: rgba(240, 240, 240, 0.8);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    
+  }
+  form .Gn-Input input[type='radio']:hover + .custom-radio::after {
+    background-color: rgba(255, 255, 255, 0.66);
+    box-shadow: 0 0 5px black;
+  }
+  form .Gn-Input input[type='radio']:active + .custom-radio::after {
+    background-color: rgb(255, 255, 255, 0.86);
+    box-shadow: 0 0 6px black;
+  }
+  form .Gn-Input:hover .custom-radio {
+    border-color: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 0 5px black;
+  }
+
+  form .Gn-Input:active .custom-radio {
+    border-color: rgb(255, 255, 255);
+    box-shadow: 0 0 6px black;
+  }
+form .BoxInputForm-Gn .Text-Note {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    padding: 3px 0 0 ;
+    margin: 0;
+}
+.Li-Gn {
+   display: flex;
+    width: max-content;
+    height: max-content;
+    padding: 5px;
+    background-color: red;
+    list-style-image: url(image/Game_IC.png);
+}
+.Li-Gn::after {
+    content: '';
+   
+    z-index: -1;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+ form .OrLoginSingUp {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    padding-top: 5px;
+}
+form .OrLoginSingUp p {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    text-shadow: 0 0 5px black;
+}
+ form .OrLoginSingUp::before {
+    content: '';
+    width: 100%;
+    height: 6px;
+    position: absolute;
+    top: 0;
+    background: rgba(240, 240, 240, 0.46);
+    border-radius: 30px;
+}
+ form .OrLoginSingUp button[type='button'] {
+    display: inline-block;
+    width: 55%;
+    height: 30px;
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgba(240, 240, 240, 0.26);
+    border-radius: 30px;
+    font-size: 17.5px;
+    word-spacing: -2px;
+    text-shadow: 0 0 3px black;
+    font-weight: bolder;
+    color: rgba(240, 240, 240, 0.96);
+    transition: all 0.30s linear;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+}
+ form .OrLoginSingUp button[type='button']:hover {
+    background: rgba(240, 240, 240, 0.36);
+    box-shadow: 0 0 5px black, inset 0 0 5px rgba(0, 0, 0, 0.62);
+}
+ form .OrLoginSingUp button[type='button']:active {
+    background: rgba(240, 240, 240, 0.46);
+    box-shadow: 0 0 8px black, inset 0 0 8px rgba(0, 0, 0, 0.62);
+}
+.SuccessForm {
+    display: flex;
+    width: 55%;
+    max-width: 570px;
+    height: 55%;
+    max-height: max-content;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    backdrop-filter: blur(15px);
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 30px;
+    outline: none;
+    box-shadow: 0 0 15px 5px black;
+    padding: 0;
+    gap: 0;
+    transition: all 0.3s ease;
+    flex-direction: column;
+    white-space: nowrap;
+    outline: 4px solid rgba(240, 240, 240, 0.688);
+   
+}
+@keyframes AnimSuccessFormHide {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0.15;
+    }
+}
+.SuccessForm .Cover-SuccessForm {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: inherit;
+    z-index: -1;
+    transition: all 0.3s linear, height 0.3s linear;
+} 
+.SuccessForm .Cover-SuccessForm .Load-SuccessForm {
+    display: none;
+    width: 95%;
+    height: 95%;
+    background: rgba(240, 240, 240, 0.36);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-clip: border-box;
+    border-radius: 50%;
+    transition: all 0.45s linear;
+    animation: Load-SuccessFormAnim 0.45s infinite;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    opacity: 0.25;
+}
+
+.SuccessForm .Top-SuccessForm {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    background: rgba(240, 240, 240, 0.26);
+    background-attachment: fixed;
+    background-size: cover;
+    backdrop-filter: blur(15px);
+    align-items: center;
+    justify-content: space-between;
+    padding: 17px;
+    border-radius: 30px 30px 0 0;
+}
+.SuccessForm .Top-SuccessForm .Logo-Image-Text {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    background-color: transparent;
+    padding: 5px;
+    gap: 3px;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+.SuccessForm .Top-SuccessForm .Logo-Image-Text img {
+    width: 35px;
+    height: 35px;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: fill;
+    pointer-events: none;
+}
+.SuccessForm .Top-SuccessForm .Logo-Image-Text span {
+    font-size: 18px;
+    font-weight: bolder;
+    text-shadow: 0 0 3px black;
+    color: white;
+    letter-spacing: 0.15px;
+}
+.SuccessForm .Top-SuccessForm .CloseBTN-SuccessForm {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.36);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid rgba(240, 240, 240, 0.605);
+    cursor: pointer;
+}
+.SuccessForm .Main-SuccessForm {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: inset 0 0 5px black;
+    transition: all 1s cubic-bezier(1, 0.15, 0.05, 1);
+    overflow: hidden;
+}
+.SuccessForm .Main-SuccessForm img {
+   display: flex;
+    width: 80px;
+    height: 80px;
+    pointer-events: none;
+    transition: all 0.35s linear;
+    
+}
+.SuccessForm .Main-SuccessForm i {
+    display: flex;
+     width: 80px;
+     height: 80px;
+     pointer-events: none;
+     transition: all 0.35s linear;
+     opacity: 0.25;
+ }
+ 
+.SuccessForm .Main-SuccessForm .TrueOrFalse-Text {
+    display: flex;
+    width: fit-content;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 0;
+    transition: all 0.3s linear;
+    user-select: none;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    z-index: 1;
+}
+.SuccessForm .Main-SuccessForm .TrueOrFalse-Text .BG-Load-SuccessForm {
+    content: '';
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: rgba(240, 240, 240, 0.26);
+    border-radius: 10px;
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -1;
+    align-items: center;
+    justify-content: center;
+}
+.SuccessForm .Main-SuccessForm .TrueOrFalse-Text .Load-SuccessForm {
+    content: '';
+    display: flex;
+    width: 101%;
+    height: 100%;
+    animation: Load-TrueOrFalseAnim 1.25s linear;
+    transition: all 0.3s ease;
+    box-shadow:  0 0 5px  black, inset 0 0 5px white;
+    background-color: rgba(240, 240, 240, 0.26);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transition: all 0.3s ease;
+}
+@keyframes Load-TrueOrFalseAnim {
+    0% {
+        width: 0%;
+    }
+    95% {
+        box-shadow: 0 0 0 0 ,inset 0 0 5px white;
+    }
+    100% {
+        width: 100%;
+        
+    }
+}
+
+.SuccessForm .Main-SuccessForm .TrueOrFalse-Text  p {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0;
+    word-spacing: 0.5px;
+    text-align: center;
+    
+}
+.SuccessForm .Bottom-SuccessForm {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    background: rgba(240, 240, 240, 0.26);
+    backdrop-filter: blur(15px);
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 0 0 30px 30px;
+}
+.SuccessForm .Bottom-SuccessForm button[type='button'] {
+    display: inline-block;
+    width: 25%;
+    height: 30px;
+    background: rgba(240, 240, 240, 0.26);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 5px rgb(240, 240, 240, 0.36) , 0 0 3px black;
+    border: 2px solid rgba(70,70,70, 0.36);
+    color: rgba(255, 255, 255, 0.96);
+    text-shadow: 0 0 3px black;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+.SuccessForm .Bottom-SuccessForm button[type='button']:hover {
+   box-shadow: 0 0 10px rgba(240, 240, 240, 0.674), 0 0 5px black, inset 0 0 3px black;
+   background: rgba(255, 255, 255, 0.9);
+
+}
+
+.SuccessForm .Bottom-SuccessForm button[type='button']:active {
+    background: rgba(240, 240, 240, 0.6);
+    box-shadow: 0 0 5px rgb(240, 240, 240, 0.36) , 0 0 3px black , inset 0 0 3px black;
+
+}
+@keyframes Hide-SuccessForm {
+    0% {
+        height: max-content;
+    }
+    100% {
+        height: 12%;
+    }
+}
+.NewButton {
+    display: none;
+    width: 70%;
+    height: 85px;
+    background-image: linear-gradient(45deg, red, lime,blue,cyan);
+    background-attachment:fixed;
+    background-clip: border-box;
+    border: 2px solid rgba(75,75,75);
+    border-radius: 30px;
+    font-size: 26px;
+    box-shadow: 0 0 15px black;
+    background-size: 100%;
+    animation: LinearBackgroundAnim 3s infinite;
+    transition: all 3s ease;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    z-index: 10000;
+}
+@keyframes LinearBackgroundAnim {
+    0% {
+        background-size: 100%;
+    }
+    100% {
+        background-size: 1000%;
+    }
+   
+}

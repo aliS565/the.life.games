@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium Radio Buttons</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      background: #1a1a1a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    .BoxInputForm-Gn {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .BoxInputForm-Gn .BoxInput-Gn {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .BoxInputForm-Gn .BoxInput-Gn .Gn-Input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 15px;
+      border-radius: 30px;
+      background: linear-gradient(-45deg, rgba(240, 240, 240, 0.1), rgba(0, 0, 0, 0.4));
+      box-shadow: 0 0 15px black;
+      border: 3px solid rgba(240, 240, 240, 0.26);
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    /* Hide native radio */
+    .Gn-Input input[type='radio'] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Custom radio circle */
+    .Gn-Input .custom-radio {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(240, 240, 240, 0.8);
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 3px black;
+    }
+
+    /* Filled dot when checked */
+    .Gn-Input input[type='radio']:checked + .custom-radio::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background-color: rgba(240, 240, 240, 0.9);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Hover effect */
+    .Gn-Input:hover .custom-radio {
+      border-color: #fff;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+    }
+
+    .Gn-Box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .LabelGender {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="BoxInputForm-Gn">
+    <label class="Title-Gender">Gender:</label>
+    <div class="BoxInput-Gn">
+
+      <label class="Gn-Input">
+        <input type="radio" name="gender" value="male" id="genderMale">
+        <span class="custom-radio"></span>
+        <div class="Gn-Box">
+          <i class="fa-solid fa-male"></i>
+          <span class="LabelGender">Male</span>
+        </div>
+      </label>
+
+      <label class="Gn-Input">
+        <input type="radio" name="gender" value="female" id="genderFemale">
+        <span class="custom-radio"></span>
+        <div class="Gn-Box">
+          <i class="fa-solid fa-female"></i>
+          <span class="LabelGender">Female</span>
+        </div>
+      </label>
+
+    </div>
+  </div>
+
+</body>
+</html>

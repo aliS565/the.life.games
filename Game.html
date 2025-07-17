@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <li></li>
+    <style>
+        * {
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        canvas {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            box-shadow:0 0 15px black;
+          
+        }
+        body {
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        body::-webkit-scrollbar {
+            width: 10px;
+            background: red;
+        }
+        #game-canvas {
+        border: 1px solid #ccc;
+        background-image: linear-gradient( to, bottom, #b32929, #02b4d3);
+        align-items: flex-start;
+        justify-content: space-between;
+        position: absolute;
+        display: n;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        
+    }
+        .button {
+            position: absolute;
+            bottom: 20px;
+            width: 160px;
+            height: 45px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 2px black;
+            border-radius: 30px;
+            transition: all 0.3s linear;
+            cursor: pointer;
+            z-index: 1;
+            background: black;
+        }
+        .button:hover {
+            background-color: white;
+            color: black;
+        }
+        #left-button {
+            left: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+        }
+        #right-button {
+            right: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+        }
+        #jump-button {
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: black;
+            color: white;
+            border: none;
+            
+        }
+        .HideBG {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(55deg, rgb(6, 214, 214),white);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            transition: all 0.3s ease;
+
+        }
+        .FormUserName {
+            display: flex;
+            width: 65%;
+            height: auto;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background: linear-gradient(to right, rgb(0, 230, 230),white);
+            box-shadow: 0 0 25px white; 
+            padding: 10px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            animation:  FadeTopToBottom 0.4s ease;
+        }
+        @keyframes FadeTopToBottom {
+            0% {
+               transform: translateY(-100%);
+               opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        h1 {
+            text-shadow: 0 0 5px rgb(255, 255, 255);
+            word-spacing: -2.6px;
+            letter-spacing: 0.25px;
+            background-color: 200%;
+            background-clip: content-box;
+            position: relative;
+        }
+        h1::after {
+            content: '';
+            display: block;
+            width: 82.5%;
+            height: 5px;
+            background: black;
+            border-radius: 3px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: -4px auto;
+            box-shadow: 0 0 5px white;
+        }
+        .InputText {
+            display: flex;
+            width: 380px;
+            height: 40px;
+            border-radius: 30px;
+            background: linear-gradient(120deg,rgb(0, 230, 230),white);
+            box-shadow: 0 0 15px white;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+            position: relative;
+           
+        }
+        .InputText label {
+            display: flex;
+            padding: 0 5px;
+            width: max-content;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            font-weight: bolder;
+            font-size: 16px;
+            word-spacing: -1px;
+            text-shadow: 0 0 5px white;
+            border-radius: 30px 0 0 30px;
+            background-attachment: fixed;
+            background: linear-gradient(to left, rgb(0, 230, 230),white);
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .InputText input {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: black;
+            font-size: 16px;
+            font-weight: bolder;
+            padding: 0 5px;
+            cursor: text;
+        }
+        .InputText input::placeholder {
+            color: rgb(30,30,30);
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .InputText .TrueBTN {
+            display: flex;
+            width: max-content;
+            height: 100%;
+            background: linear-gradient(to left, rgb(0, 230, 230),white);
+            background-attachment: fixed;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 0 5px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 0 30px 30px 0;
+        }
+        .HideBG .SubmitBTN {
+            display: block;
+            width: 280px;
+            height: 30px;
+            margin-top: 10px;
+            background: linear-gradient(to bottom,rgb(0, 230, 230),white);
+            border-radius: 30px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-size: 17px;
+            font-weight: bold;
+            text-shadow: 0 0 5px white;
+            box-shadow: 0 0 5px white;
+            transition: all 0.3s ease;
+        }
+        .HideBG .SubmitBTN:hover {
+            box-shadow: 0 0 15px white, inset 0 0 5px white;
+        }
+        .HideBG .SubmitBTN:active {
+            opacity: 0.8;
+            box-shadow: 0 0 10px white , 0 0 5px white;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="game-canvas" width="1920" height="1080">
+    
+    </canvas>
+    <button class="button" id="left-button">Left</button>
+    <button class="button" id="right-button">Right</button>
+    <button class="button" id="jump-button">Jump</button>
+    <div class="HideBG">
+        <div class="FormUserName">
+        <h1>Welcom To IN First Game</h1>
+        <div class="InputText">
+            <label for="UserName">User Name:</label>
+            <input type="text" id='UserNameInput'>
+            <button type="button" class="TrueBTN"><i class="fa-soid fa-true"></i></button>
+        </div>
+        <button type="button" class="SubmitBTN">Go</button>
+    </div>
+</div>
+    <script>
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+        let player = { x: 150, y: 180, width: 65, height: 50, color: 'rgba(12,0,255)', velocityX: 0, velocityY: 0, speed: 6, health: 100 };
+        let platforms = [{ x: 100, y: 530, width: 200, height: 20 }, { x: 400, y: 430, width: 200, height: 20 }, { x: 700, y: 330, width: 200, height: 20 }];
+        let coins = [{ x: 150, y: 450, width: 20, height: 20 }, { x: 450, y: 310, width: 20, height: 20 }, { x: 750, y: 210, width: 20, height: 20 }];
+        let bullets = [];
+        let score = 0;
+        let UserName = [];
+        const Input = document.getElementById('UserNameInput').value;
+        const HideBG = document.querySelector('.HideBG');
+        const SubmitBTN = document.querySelector('.SubmitBTN');
+        let gameOver = false;
+       
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'a' || e.key === 'A') {
+                player.velocityX = -player.speed;
+            } else if (e.key === 'd' || e.key === 'D') {
+                player.velocityX = player.speed;
+            } else if (e.key === ' ') {
+                // Jump
+                if (player.y + player.height === canvas.height || platforms.some(platform => player.y + player.height === platform.y && player.x + player.width > platform.x && player.x < platform.x + platform.width)) {
+                    player.velocityY = -20;
+                }
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'a' || e.key === 'A' || e.key === 'd' || e.key === 'D') {
+                player.velocityX = 0;
+                player.velocityY = 0;
+            }
+        });
+
+        function update() {
+           
+                SubmitBTN.addEventListener('click', () =>  {
+            HideBG.style.transform = 'translateX(-100%)';
+            HideBG.style.opacity = '0';
+            canvas.style.transform = 'translateX(0)';
+            canvas.style.opacity = '1';
+        });
+      
+            if (!gameOver) {
+                player.x += player.velocityX;
+                player.y += player.velocityY;
+
+                // Apply gravity
+                if (player.y + player.height < canvas.height) {
+                    player.velocityY += 1;
+                } else {
+                    player.y = canvas.height - player.height;
+                    player.velocityY = 0;
+                }
+
+                // Check platform collision
+                platforms.forEach(platform => {
+                    if (player.x + player.width > platform.x && player.x < platform.x + platform.width && player.y + player.height > platform.y && player.y < platform.y + platform.height) {
+                        player.y = platform.y - player.height;
+                        player.velocityY = 0;
+                    }
+                });
+
+                // Create new platform
+                if (platforms[platforms.length - 1].x + platforms[platforms.length - 1].width < canvas.width) {
+                    let newX = platforms[platforms.length - 1].x + platforms[platforms.length - 1].width + 50;
+                    let newY = Math.random() * (canvas.height - 200) + 100;
+                    platforms.push({ x: newX, y: newY, width: 180, height: 25 });
+                    coins.push({ x: newX + 50, y: newY - 50, width: 25, height: 25 });
+                }
+
+                // Check coin collision
+                coins.forEach(coin => {
+                    if (player.x + player.width > coin.x && player.x < coin.x + coin.width && player.y + player.height > coin.y && player.y < coin.y + coin.height) {
+                        score += 10;
+                        coins.splice(coins.indexOf(coin), 1);
+                    }
+                });
+
+                // Check game over
+                if (player.x > platforms[platforms.length - 1].x + platforms[platforms.length - 1].width) {
+                    gameOver = true;
+                }
+            }
+            if (!gameOver === true) {
+            
+            }
+            document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' || e.key === 'R') {
+               document.createComment(gameOver, 'Try again');
+            } 
+        });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgb(0, 202, 202)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            platforms.forEach(platform => {
+                ctx.fillStyle = 'brown';
+                ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+            });
+            coins.forEach(coin => {
+                ctx.fillStyle = 'yellow';
+                ctx.fillRect(coin.x, coin.y, coin.width, coin.height);
+            });
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+            ctx.fillRect(player.x + player.width / 3, player.y + player.height / 20, 20, 120);
+            ctx.fillStyle = 'black';
+            ctx.fillRect(player.x + player.width / 4, player.y + player.height / 4, 10, 10); // left eye
+            ctx.fillStyle = 'white';
+            ctx.fillRect(player.x + player.width - player.width / 4 - 10, player.y + player.height / 4, 10, 10); // right eye
+            ctx.fillStyle = 'red';
+            ctx.fillRect(player.x + player.width / 2 - 5, player.y + player.height / 2 + 10, 10, 10); // mouth
+            ctx.font = '24px Arial';
+            ctx.fillStyle = 'black';
+            ctx.fillText(`Health: ${player.health}`, 10, 30);
+            ctx.fillText(`Score: ${score}`, 10, 60);
+            if (gameOver) {
+                ctx.font = '80px Arial';
+                ctx.fillStyle = 'red';
+                ctx.fillText('Ooooops Try Again', canvas.width / 2 - 250, canvas.height / 2);
+            }
+            requestAnimationFrame(draw);
+            update();
+        }
+
+        draw();
+        document.getElementById('left-button').addEventListener('click', () => {
+    player.velocityX = -player.speed;
+    player.velocityX = -5;
+});
+
+document.getElementById('right-button').addEventListener('click', () => {
+    player.velocityX = player.speed;
+    player.velocityX = 5;
+});
+
+document.getElementById('jump-button').addEventListener('click', () => {
+    // Jump
+    if (player.y + player.height === canvas.height || platforms.some(platform => player.y + player.height === platform.y && player.x + player.width > platform.x && player.x < platform.x + platform.width)) {
+        player.velocityY = -20;
+    }
+});
+
+// Add event listeners to stop moving when the button is released
+document.getElementById('left-button').addEventListener('mouseup', () => {
+    player.velocityX = 0;
+});
+
+document.getElementById('right-button').addEventListener('mouseup', () => {
+    player.velocityX = 0;
+});
+let movingLeft = false;
+let movingRight = false;
+
+document.getElementById('left-button').addEventListener('mousedown', () => {
+    movingLeft = true;
+});
+
+document.getElementById('left-button').addEventListener('mouseup', () => {
+    movingLeft = false;
+});
+
+document.getElementById('right-button').addEventListener('mousedown', () => {
+    movingRight = true;
+});
+
+document.getElementById('right-button').addEventListener('mouseup', () => {
+    movingRight = false;
+});
+
+// In your update function
+if (movingLeft) {
+    player.velocityX = -player.speed;
+} else if (movingRight) {
+    player.velocityX = player.speed;
+} else {
+    player.velocityX = 0;
+}
+    </script>
+</body>
+</html>
