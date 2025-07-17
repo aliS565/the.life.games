@@ -21,27 +21,8 @@ var CloseFormBTN = document.getElementById('CloseFormLoginBTN');
 var OpenFormBTN = document.getElementById('BTN-FormLogin');
 var SuccessForm = document.querySelector('.SuccessForm');
 var MainSuccessForm = document.querySelector('.SuccessForm .Main-SuccessForm');
-var CloseSuccessFormBtN = document.getElementById('SuccessForm-Done-BTN');
-var NewButton = document.createAttribute('NuttonNew').style.display = 'flex';   
-let i = 0;
-const flaotWidth = [...Array(101).keys()];
-const interval = setInterval(() => {
-  LoadTXT.innerHTML = flaotWidth[i] + "%";
-  i++;
-  if (i == flaotWidth.length) {
-    clearInterval(interval);
-    LoadTXT.innerHTML = '100%';
-  }
-    i++;
-}, 100);
-let WaitTimeAnim = 0;
-let interval = setInterval(() => {
-  WaitTimeAnim++;
-  if (WaitTimeAnim >= 1) {
-    SuccessForm.classList.add('hide');
-    clearInterval(interval);
-  }
-}, 3200); 
+var CloseSuccessFormBtN = document.getElementById('SuccessForm-Done-BTN');   
+
 function Box_1() {
     BodyElement.style.background = 'linear-gradient(120deg, purple,black)';
     BodyElement.style.color = 'white';
@@ -186,7 +167,7 @@ function PasswordLoginBTN() {
 
   // 2. بعد انتهاء الأنيميشن (1 ثانية)، اجعل MainSuccessForm height = 0
   setTimeout(() => {
-    MainSuccessForm.style.height = '0';
+    MainSuccessForm.classList.add('hide');
   }, 1000); // 
 }
 
