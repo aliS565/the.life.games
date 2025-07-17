@@ -187,7 +187,7 @@ function PasswordLoginBTN() {
   // 2. بعد انتهاء الأنيميشن (1 ثانية)، اجعل MainSuccessForm height = 0
   setTimeout(() => {
     MainSuccessForm.style.height = '0';
-  }, 3200); // 
+  }, 1000); // 
 }
 
 CloseSuccessFormBtN.addEventListener('click', CloseSuccessForm);
