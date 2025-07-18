@@ -2312,3 +2312,63 @@ form .OrLoginSingUp p {
     transform: scale(1);
     box-shadow: 0 0 10px limegreen;
 }
+.AdsMenu {
+    display: flex;
+    width: 70%;
+    height: auto;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    background: rgba(240,240,240, .26);
+    box-shadow: 0 0 10px white;
+    border: 3px solid white;
+    border-radius: 10px;
+}
+.AdsMenu h1 {
+    font-size: 21px;
+    font-weight: bolder;
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+.AdsMenu p {
+    display: flex;
+    font-size: 17px;
+    font-weight: bold;
+    text-shadow: 0 0 2px black;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: max-content;
+    height: max-content;
+    background: rgba(240,240,240, 0.12);
+    border-radius: 3px;
+    border: 2px solid white;
+    box-shadow: 0 0 5px white;
+    color: white;
+    
+}
+.AdsMenu p a {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    padding: 3px;
+    background: transparent;
+    box-shadow: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    color: rgba(250,250,250);
+    text-shadow: 0 0 3px black;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+.AdsMenu p a:hover {
+    background: rgba(240,240,240, 0.26);
+    box-shadow: 0 0 3px white;
+}
+.AdsMenu p a:active {
+    background: rgba(240,240,240, .36);
+    box-shadow: 0 0 5px white;
+}
