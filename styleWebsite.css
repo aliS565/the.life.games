@@ -1061,6 +1061,14 @@ justify-content: center;
     box-shadow: 0 0 15px black, inset 0 0 8px black;
     margin-bottom: 20px;
 }
+.FooterBottom .FooterInfoTex {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    font-size: 22px;
+    font-weight: bolder;
+    text-shadow: 0 0 3px black;
+}
 .WrapDownPage .TopDownPage {
     display: flex;
     width: 100%;
