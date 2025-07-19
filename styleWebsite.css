@@ -2,7 +2,7 @@
     font-family: 'WarbandStencil';
     src: url('Font/WarbandStencil-Textured.woff2') format('woff2'),
          url('Font/WarbandStencil-Textured.woff') format('woff');
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
 }
 
