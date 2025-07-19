@@ -21,7 +21,7 @@ margin: 0;
 align-items: center;
 justify-content: center;
 display: flex;
-flex-wrap: wrap;
+flex-direction: column;
 height: auto;
 gap: 10px;
 scroll-behavior: smooth;
@@ -1041,11 +1041,7 @@ justify-content: center;
     align-items: center;
     justify-content: center;
     gap: 5px;
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+ 
 }
 .FooterBottom .FooterInfoTex {
     display: flex;
