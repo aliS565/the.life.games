@@ -69,7 +69,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <body>
         <header>
             <li class='MainLogo'>
-            <img src='image/Game_IC.png' loading="lazy"></ing>
+            <img src='image/Game_IC.png' loading="lazy">
             <span>THe-Gaming-LiFe علي سيد</span>
             </li>
             <nav>
@@ -172,15 +172,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
                 </div>
                 <div class="P-GM-Page">
-                    <p>
-                        This Game Craeted Be Unity Engine 6 Can Play For Free Is Coming his Game Craeted
-                         Be Unity Engine 6 Can Play For Free Is Coming his Game Craeted Be Unity Engine 6 Can Play For Free Is Coming his Game Craeted 
-                         Be Unity Engine 6 Can Play For Free Is Coming his Game Craeted Be Unity Engine 6 Can Play For Free Is Coming 
-                         is Game Craeted Be Unity Engine 6 Can Play For Free Is 
-                         Coming his Game Craeted Be Unity Engine 6 Can Play For Free Is Coming his Game Craeted Be Unity Engine 6 Can Play For Free Is Coming 
-                         his Game Craeted Be Unity Engine 6 Can Play For Free Is Coming his Game Craeted Be Unity Engine 6 Can Play For Free Is Coming his Game Craeted Be Unity Engine 6 Can Play For Free Is 
-                         Coming his Game Craeted Be Unity Engine 6 Can Play For Free Is Coming
-                        </p>
+                <p>This game was created using Unity Engine 6 and will be available for free soon.</p>
                 </div>
                 <div class="Comment-GM-Page">
                     <li class="Li-Gn"></li>
@@ -311,7 +303,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
         <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDWCZN7G"
-height="640" width="640" style="display:block;visibility:visible"></iframe></noscript>
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
             <div class='FooterBottom'>
     <div class='FooterInfoText'>More For You:</div>
@@ -324,29 +316,39 @@ height="640" width="640" style="display:block;visibility:visible"></iframe></nos
            <script src="https://alis565.github.io/the.life.games/JavaScript.js"></script>
   <!-- Firebase App Check -->
 <script type="module">
-  // استيراد Firebase App Check
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
   import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
 
-  // firebaseConfig تبع مشروعك
   const firebaseConfig = {
-    apiKey: "AIza....",           // من Firebase Console
-    authDomain: "....firebaseapp.com",
-    projectId: "....",
-    storageBucket: "....",
+    apiKey: "...",
+    authDomain: "...",
+    databaseURL: "...",
+    projectId: "...",
+    storageBucket: "...",
     messagingSenderId: "...",
-    appId: "1:...:web:...",
-    measurementId: "G-..."
+    appId: "...",
+    measurementId: "..."
   };
 
   const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
 
-  // 🛡️ تفعيل App Check باستخدام reCAPTCHA v3
+  // App Check
   const appCheck = initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider('6LebDIYrAAAAADZMITwQDoktArSchVfOD-VaAkyk'), 
-    isTokenAutoRefreshEnabled: true // يجدد التوكين تلقائياً
+    provider: new ReCaptchaV3Provider('SITE_KEY'),
+    isTokenAutoRefreshEnabled: true
+  });
+
+  // Visitor tracking
+  const visitorsRef = ref(db, 'visitors');
+  push(visitorsRef, { timestamp: new Date().toISOString() });
+  onValue(visitorsRef, (snapshot) => {
+    const count = snapshot.val() ? Object.keys(snapshot.val()).length : 0;
+    document.getElementById("visitor-count").textContent = count;
   });
 </script>
+
 <!-- Trigger rebuild -->
 </body>
 </html>
