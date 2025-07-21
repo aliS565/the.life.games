@@ -61,11 +61,16 @@
   updateVisitorCount();
 </script>
   <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KDWCZN7G');</script>
+})(window,document,'script','dataLayer','GTM-KDWCZN7G');
+</script>
+<!-- End Google Tag Manager -->
+
 <!-- End Google Tag Manager -->
 
 </head>
@@ -112,8 +117,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </p>
               </div>
   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDWCZN7G"
-height="640" width="640" style="display:block;visibility:visible"></iframe></noscript>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDWCZN7G"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <!-- End Google Tag Manager (noscript) -->
              <div class='FooterBottom' style="position: absolute; bottom: 0; right: 0; left: 0; margin: auto;">
     <div class='FooterInfoText'>More For You:</div>
@@ -125,30 +135,5 @@ height="640" width="640" style="display:block;visibility:visible"></iframe></nos
   </div>
              <script src="https://alis565.github.io/the.life.games/JavaScript.js"></script>
   <!-- Firebase App Check -->
-<script type="module">
-  // استيراد Firebase App Check
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
-
-  // firebaseConfig تبع مشروعك
-  const firebaseConfig = {
-    apiKey: "AIza....",           // من Firebase Console
-    authDomain: "....firebaseapp.com",
-    projectId: "....",
-    storageBucket: "....",
-    messagingSenderId: "...",
-    appId: "1:...:web:...",
-    measurementId: "G-..."
-  };
-
-  const app = initializeApp(firebaseConfig);
-
-  // 🛡️ تفعيل App Check باستخدام reCAPTCHA v3
-  const appCheck = initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider('6LebDIYrAAAAADZMITwQDoktArSchVfOD-VaAkyk'), 
-    isTokenAutoRefreshEnabled: true // يجدد التوكين تلقائياً
-  });
-</script>
-
 </body>
 </html>
