@@ -16,54 +16,6 @@
   gtag('js', new Date());
   gtag('config', 'G-97Y58KGXPB');
 </script>
-   <script type="module">
-  // استيراد Firebase
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-  // إعدادات Firebase الخاصة بك
-  const firebaseConfig = {
-    apiKey: "XXXXXXX",
-    authDomain: "XXXXXXX.firebaseapp.com",
-    databaseURL: "https://XXXXXXX-default-rtdb.firebaseio.com",
-    projectId: "XXXXXXX",
-    storageBucket: "XXXXXXX.appspot.com",
-    messagingSenderId: "XXXXXXX",
-    appId: "XXXXXXX"
-  };
-
-  // تهيئة Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  // تسجيل الزائر
-  function registerVisitor() {
-    const visitorsRef = ref(db, 'visitors');
-    push(visitorsRef, {
-      timestamp: new Date().toISOString()
-    });
-  }
-
-  // عرض عدد الزوار
-  function updateVisitorCount() {
-    const visitorsRef = ref(db, 'visitors');
-    onValue(visitorsRef, (snapshot) => {
-      const data = snapshot.val();
-      const count = data ? Object.keys(data).length : 0;
-      document.getElementById("visitor-count").textContent = count;
-    });
-  }
-
-  // تنفيذ الوظائف
-  registerVisitor();
-  updateVisitorCount();
-</script>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KDWCZN7G');</script>
 <!-- End Google Tag Manager -->
 </head>
 <body>
@@ -136,32 +88,6 @@ height="640" width="640" style="display:block;visibility:visible"></iframe></nos
       </a>
     <div class='AmountUsersBTN'>عدد الزوار: <span id="visitor-count">0</span></div>
   </div>
-           <script src="https://alis565.github.io/the.life.games/JavaScript.js"></script>
-  <!-- Firebase App Check -->
-<script type="module">
-  // استيراد Firebase App Check
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
-
-  // firebaseConfig تبع مشروعك
-  const firebaseConfig = {
-    apiKey: "AIza....",           // من Firebase Console
-    authDomain: "....firebaseapp.com",
-    projectId: "....",
-    storageBucket: "....",
-    messagingSenderId: "...",
-    appId: "1:...:web:...",
-    measurementId: "G-..."
-  };
-
-  const app = initializeApp(firebaseConfig);
-
-  // 🛡️ تفعيل App Check باستخدام reCAPTCHA v3
-  const appCheck = initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider('6LebDIYrAAAAADZMITwQDoktArSchVfOD-VaAkyk'), 
-    isTokenAutoRefreshEnabled: true // يجدد التوكين تلقائياً
-  });
-</script>
-<!-- Trigger rebuild -->
+<script type="module" src="JavaScript.js"></script>
 </body>
 </html>
