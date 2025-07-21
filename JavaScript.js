@@ -21,7 +21,8 @@ var CloseFormBTN = document.getElementById('CloseFormLoginBTN');
 var OpenFormBTN = document.getElementById('BTN-FormLogin');
 var SuccessForm = document.querySelector('.SuccessForm');
 var MainSuccessForm = document.querySelector('.SuccessForm .Main-SuccessForm');
-var CloseSuccessFormBtN = document.getElementById('SuccessForm-Done-BTN');   
+var AboutUs_CoverDetialsBar = document.querySelector('.CoverDetailsBar'); 
+var AboutUs_DetialsShowHideBTN = document.querySelector('.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .AboutUs-DetialsShowHide-BTN');
 
 function Box_1() {
     BodyElement.style.background = 'linear-gradient(120deg, purple,black)';
@@ -172,3 +173,7 @@ function CloseSuccessForm() {
 }
 
 CloseSuccessFormBtN.addEventListener('click', CloseSuccessForm);
+function AboutUsShowHideDetials() {
+    AboutUs_CoverDetialsBar.classList.add('Hide');
+}
+AboutUs_DetialsShowHideBTN.addEventListener('click', AboutUsShowHideDetials);
