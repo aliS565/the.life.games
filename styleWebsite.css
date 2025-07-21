@@ -2748,3 +2748,100 @@ form .OrLoginSingUp p {
 .Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement .AboutUs-DetialsBar-CopyBTN:active > i {
     text-shadow: 0 0 5px black;
 }
+.WrapSuccessWork {
+    display: flex;
+    width: 600px;
+    height: 460px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(240,240,240, 0.26);
+    border: 4px solid rgba(240,240,240, 0.26);
+    box-shadow: 0 0 15px black;
+    border-radius: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 100px;
+    top: 0;
+    left: 0;
+    margin: auto;
+    transition: all 0.3s ease;
+}
+.WrapSuccessWork:hover {
+    box-shadow: 0 0 15px black, inset 0 0 10px white;
+}
+.WrapSuccessWork .SuccessWork-TrueSuccess {
+    display: flex;
+    width: 260px;
+    height: 260px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(240,240,240, 0.16);
+    border-radius: 50%;
+    border: 3px solid rgba(240,240,240, 0.26);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px black;
+    font-size: 26px;
+    animation: ScaleUp-TrueSuccess 0.46s ease;
+}
+@keyframes ScaleUp-TrueSuccess {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.WrapSuccessWork h1 {
+    text-shadow: 0 0 3px black;
+    position: relative;
+}
+.WrapSuccessWork h1::after {
+    content: '';
+    display: block;
+    width: 95%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    margin: auto;
+    box-shadow: 0 0 2px black;
+
+}
+.WrapSuccessWork .SuccessWork-BackToHomeBTN {
+    display: flex;
+    width: 80%;
+    height: 45px;
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgba(240, 240, 240, 0.26);
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0 0 5px black;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    word-spacing: -1px;
+    text-shadow: 0 0 3px black;
+}
+.WrapSuccessWork .SuccessWork-BackToHomeBTN:hover {
+    background: rgba(255, 255, 255, 0.86);
+    border-color: rgba(0, 0, 0, 0.86);
+    color: black;
+    text-shadow: none;
+}
+.WrapSuccessWork .SuccessWork-BackToHomeBTN:active {
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgba(240, 240, 240, 0.26);
+    box-shadow: 0 0 8px black;
+    color: white;
+}
