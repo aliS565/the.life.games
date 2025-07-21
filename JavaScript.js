@@ -99,45 +99,4 @@ function AboutUsShowHideDetials() {
     AboutUs_CoverDetialsBar.classList.add('Hide');
 }
 AboutUs_DetialsShowHideBTN.addEventListener('click', AboutUsShowHideDetials);
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-  // ✅ استبدل هذه القيم من مشروع Firebase الخاص بك
-  const firebaseConfig = {
-    apiKey: "XXXXXXX",
-    authDomain: "XXXXXXX.firebaseapp.com",
-    databaseURL: "https://XXXXXXX-default-rtdb.firebaseio.com",
-    projectId: "XXXXXXX",
-    storageBucket: "XXXXXXX.appspot.com",
-    messagingSenderId: "XXXXXXX",
-    appId: "XXXXXXX"
-  };
-
-  // ⚙️ تهيئة التطبيق وقاعدة البيانات
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  // 👤 تسجيل الزائر
-  function registerVisitor() {
-    const visitorsRef = ref(db, 'visitors');
-    push(visitorsRef, {
-      timestamp: new Date().toISOString()
-    });
-  }
-
-  // 🔢 عرض عدد الزوار
-  function updateVisitorCount() {
-    const visitorsRef = ref(db, 'visitors');
-    onValue(visitorsRef, (snapshot) => {
-      const data = snapshot.val();
-      const count = data ? Object.keys(data).length : 0;
-      document.getElementById("visitor-count").textContent = count;
-    });
-  }
-
-  // 🚀 تشغيل الوظيفتين
-  registerVisitor();
-  updateVisitorCount();
-</script>
 
