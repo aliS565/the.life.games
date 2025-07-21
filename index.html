@@ -16,55 +16,7 @@
   gtag('js', new Date());
   gtag('config', 'G-97Y58KGXPB');
 </script>
-   <script type="module">
-  // استيراد Firebase
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-  // إعدادات Firebase الخاصة بك
-  const firebaseConfig = {
-    apiKey: "XXXXXXX",
-    authDomain: "XXXXXXX.firebaseapp.com",
-    databaseURL: "https://XXXXXXX-default-rtdb.firebaseio.com",
-    projectId: "XXXXXXX",
-    storageBucket: "XXXXXXX.appspot.com",
-    messagingSenderId: "XXXXXXX",
-    appId: "XXXXXXX"
-  };
-
-  // تهيئة Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  // تسجيل الزائر
-  function registerVisitor() {
-    const visitorsRef = ref(db, 'visitors');
-    push(visitorsRef, {
-      timestamp: new Date().toISOString()
-    });
-  }
-
-  // عرض عدد الزوار
-  function updateVisitorCount() {
-    const visitorsRef = ref(db, 'visitors');
-    onValue(visitorsRef, (snapshot) => {
-      const data = snapshot.val();
-      const count = data ? Object.keys(data).length : 0;
-      document.getElementById("visitor-count").textContent = count;
-    });
-  }
-
-  // تنفيذ الوظائف
-  registerVisitor();
-  updateVisitorCount();
-</script>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KDWCZN7G');</script>
-<!-- End Google Tag Manager -->
 </head>
     <body>
         <header>
@@ -313,42 +265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
     <div class='AmountUsersBTN'>عدد الزوار: <span id="visitor-count">0</span></div>
   </div>
-           <script src="https://alis565.github.io/the.life.games/JavaScript.js"></script>
-  <!-- Firebase App Check -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-  import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
+   <script type="module" src="JavaScript.js"></script>
 
-  const firebaseConfig = {
-    apiKey: "...",
-    authDomain: "...",
-    databaseURL: "...",
-    projectId: "...",
-    storageBucket: "...",
-    messagingSenderId: "...",
-    appId: "...",
-    measurementId: "..."
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  // App Check
-  const appCheck = initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider('SITE_KEY'),
-    isTokenAutoRefreshEnabled: true
-  });
-
-  // Visitor tracking
-  const visitorsRef = ref(db, 'visitors');
-  push(visitorsRef, { timestamp: new Date().toISOString() });
-  onValue(visitorsRef, (snapshot) => {
-    const count = snapshot.val() ? Object.keys(snapshot.val()).length : 0;
-    document.getElementById("visitor-count").textContent = count;
-  });
-</script>
-
-<!-- Trigger rebuild -->
 </body>
 </html>
