@@ -601,6 +601,15 @@ opacity: 0;
     }
 
 }
+@media screen and (max-width: 900px) {
+  
+}
+@media screen and (max-width: 750px) {
+    #BTN-TeaemsPolicy {
+        display: none;
+    }
+
+}
 @media screen and (max-width: 700px) {
  header {
     padding: 0 3px;
@@ -650,11 +659,19 @@ opacity: 0;
     #BTN-FormLoginSingUp {
         display: none;
     }
-    #BTN-Privacy-Menu {
-        dispalay: none;
-    }
     #BTN-Menu {
         display: flex;
+    }
+    .Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
     }
 }
 @media screen and (max-width: 550px) {
@@ -699,7 +716,7 @@ opacity: 0;
         justify-content: flex-start;
         align-items: center;
     }
-   
+
    
 }
 @media screen and (max-width: 350px) {
@@ -2395,4 +2412,339 @@ form .OrLoginSingUp p {
 .AdsMenu p a:active {
     background: rgba(240,240,240, .36);
     box-shadow: 0 0 5px white;
+}
+.Wrap-AboutUs {
+    display: flex;
+    width: 90%;
+    height: auto;
+    background: rgba(240, 240, 240, 0.26);
+    border: 4px solid rgba(240, 240, 240, 0.26);
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    transition: all 0.3s linear;
+    box-shadow: 0 0 15px black, inset 0 0 8px black;
+    margin-bottom: 20px;
+}
+.Wrap-AboutUs .Top-AboutUs {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    padding: 5px;
+    background: rgba(240, 240, 240, 0.26);
+    border: 4px solid rgba(240, 240, 240, 0.26);
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: bolder;
+    text-shadow: 0 0 5px black;
+}
+.Wrap-AboutUs .Main-AboutUs {
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 5px;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia {
+    display: flex;
+    width: max-content;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .CoverPhoto {
+    display: flex;
+    width: 160px;
+    height: 155px;
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .CoverPhoto .OverLayPhoto {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 15px solid rgb(50,50,50);
+    background-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    border-width: 0 0 0 15px;
+    transition: all 0.3s ease;
+    animation: RotateOvaerLayAnim 1s infinite;
+}
+@keyframes RotateOvaerLayAnim {
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .CoverPhoto .AboutUs-Photo {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background-attachment: fixed;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 15px black;
+    align-items: center;
+    justify-content: center;
+    outline: 6px solid rgba(0, 0, 0, 0.26);
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .CoverPhoto .AboutUs-Photo span {
+    color: black;
+    font-size: 72px;
+    font-weight: bolder;
+    font-family: stincel;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgba(240, 240, 240, 0.26);
+    border-radius: 30px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 10px;
+    box-shadow: 0 0 10px black;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .TXT-SocialMedia {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    font-size: 22px;
+    font-weight: bolder;
+    text-shadow: 0 0 3px black;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    align-self: center;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgba(240, 240, 240, 0.26);
+    border-radius: 30px;
+    padding: 5px;
+    box-shadow: 0 0 5px black;
+    text-decoration: none;
+    font-weight: bold;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS .SCM-SpanText {
+    display: flex;
+    width: max-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: baseline;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    color: white;
+    
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS .SCM-SpanImage {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    box-shadow: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-weight: bolder;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    font-size: 22px;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS:hover > .SCM-SpanImage {
+    box-shadow: 0 0 3px black;
+    text-shadow: 0 0 3px black;
+}
+.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS:hover > .SCM-SpanText {
+   text-shadow: 0 0 3px black;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: rgba(240, 240, 240, 0.26);
+    border-radius: 3px;
+    border: 3px solid rgba(240, 240, 240, 0.26);
+    padding: 5px;
+    gap: 5px;
+    box-shadow: 0 0 10px black;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .TXT-MoreDetials {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 2px 5px;
+    position: relative;
+    font-size: 22px;
+    font-weight: bolder;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .TXT-MoreDetials::after {
+    content: '';
+    display: block;
+    width: 85%;
+    height: 3px;
+    background: rgba(240, 240, 240, 0.438);
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .AboutUs-DetialsShowHide-BTN {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: 3px solid rgba(240, 240, 240, 0.8);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: none;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .AboutUs-DetialsShowHide-BTN i {
+    transition: all 0.3s ease;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .AboutUs-DetialsShowHide-BTN:hover {
+    box-shadow: 0 0 5px black;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .AboutUs-DetialsShowHide-BTN:hover > i {
+    text-shadow: 0 0 3px black;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .AboutUs-DetialsShowHide-BTN:active {
+    box-shadow: 0 0 8px black;
+}
+.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .AboutUs-DetialsShowHide-BTN:active > i {
+    text-shadow: 0 0 5px black;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    gap: 8px;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar.Hide {
+    height: 0%;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar.Show {
+    height: 100%;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement span {
+    font-size: 19px;
+    font-weight: bold;
+    gap: 5px;
+    text-shadow: 0 0 2px black;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: rgba(240, 240, 240, 0.438);
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement:hover {
+    background: rgba(240, 240, 240, 0.26);
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement .AboutUs-DetialsBar-CopyBTN {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background: rgba(240, 240, 240, 0.26);
+    box-shadow: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement .AboutUs-DetialsBar-CopyBTN i {
+    transition: all 0.3s ease;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement .AboutUs-DetialsBar-CopyBTN:hover {
+    box-shadow: 0 0 3px black;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement .AboutUs-DetialsBar-CopyBTN:active {
+    box-shadow: 0 0 5px black;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement .AboutUs-DetialsBar-CopyBTN:hover > i {
+    text-shadow: 0 0 3px black;
+}
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar .DetialsBar-BarElement .AboutUs-DetialsBar-CopyBTN:active > i {
+    text-shadow: 0 0 5px black;
 }
