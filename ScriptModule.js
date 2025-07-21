@@ -1,3 +1,4 @@
+// استيراد مكتبات Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
@@ -17,24 +18,24 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// App Check باستخدام reCAPTCHA v3
+// ✅ App Check باستخدام reCAPTCHA v3 (استخدم مفتاح الموقع الخاص بك)
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider('YOUR_SITE_KEY'), // ← غيّره بمفتاحك
+  provider: new ReCaptchaV3Provider('6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm'),
   isTokenAutoRefreshEnabled: true
 });
 
-// تسجيل الزائر
+// ✅ تسجيل الزائر في Realtime Database
 const visitorsRef = ref(db, 'visitors');
 push(visitorsRef, { timestamp: new Date().toISOString() });
 
-// عرض عدد الزوار
+// ✅ عرض عدد الزوار على العنصر الذي يحتوي id="visitor-count"
 onValue(visitorsRef, (snapshot) => {
   const count = snapshot.val() ? Object.keys(snapshot.val()).length : 0;
   const el = document.getElementById("visitor-count");
   if (el) el.textContent = count;
 });
 
-// Google Tag Manager (في العادة يوضع في HTML، لكن يمكن إضافته أيضًا JS)
+// ✅ Google Tag Manager (اختياري، يُفضّل وضعه في الـ <head> و<noscript> في <body>)
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
