@@ -18,48 +18,7 @@
   gtag('js', new Date());
   gtag('config', 'G-97Y58KGXPB');
 </script>
-   <script type="module">
-  // استيراد Firebase
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-  // إعدادات Firebase الخاصة بك
-  const firebaseConfig = {
-    apiKey: "XXXXXXX",
-    authDomain: "XXXXXXX.firebaseapp.com",
-    databaseURL: "https://XXXXXXX-default-rtdb.firebaseio.com",
-    projectId: "XXXXXXX",
-    storageBucket: "XXXXXXX.appspot.com",
-    messagingSenderId: "XXXXXXX",
-    appId: "XXXXXXX"
-  };
-
-  // تهيئة Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  // تسجيل الزائر
-  function registerVisitor() {
-    const visitorsRef = ref(db, 'visitors');
-    push(visitorsRef, {
-      timestamp: new Date().toISOString()
-    });
-  }
-
-  // عرض عدد الزوار
-  function updateVisitorCount() {
-    const visitorsRef = ref(db, 'visitors');
-    onValue(visitorsRef, (snapshot) => {
-      const data = snapshot.val();
-      const count = data ? Object.keys(data).length : 0;
-      document.getElementById("visitor-count").textContent = count;
-    });
-  }
-
-  // تنفيذ الوظائف
-  registerVisitor();
-  updateVisitorCount();
-</script>
   <!-- Google Tag Manager -->
 <!-- Google Tag Manager -->
 <script>
