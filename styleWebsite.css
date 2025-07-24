@@ -3,15 +3,14 @@
 padding: 0;
 margin: 0;
 box-sizing: border-box;
-    color: rgb(246, 246, 246);
-    font-family: Roboto, sans-sarif;
+transition: all 0.3s ease;
 }
 html {
-    overflow-y: scroll;
+    overflow-y: auto;
     scroll-behavior: smooth;
 }
 body {
-background-image: url('image/MinBackground.png');
+background: linear-gradient(90deg,rgb(30, 30, 30), black);
 background-attachment: fixed;
 background-position: center;
 background-repeat: no-repeat;
@@ -27,23 +26,9 @@ gap: 10px;
 scroll-behavior: smooth;
 font-family: Roboto, sans-serif;
 color: rgb(246, 246, 246);
-}
-html::-webkit-scrollbar {
-    width: 12px;
-    background: rgb(50, 50, 50);
-  
+
 }
 
-html::-webkit-scrollbar-thumb {
-    background: rgb(103, 103, 103);
-    border-radius: 30px;
-}
-html::-webkit-scrollbar-track {
-    background: transparent;
-}
-html::-webkit-scrollbar-track-piece {
-    background: rgba(0, 0, 0, 0.46);
-}
 li {
 list-style: none;
 display: inline-block;
@@ -59,24 +44,28 @@ justify-content: space-between;
 background: rgba(240, 240, 240, 0.26);
 box-shadow: 0 0 5px white;
 border-radius: 0 0 6px 6px;
-padding: 0 8px;
+padding: 2px;
 z-index: 1000;
+overflow-y: hidden;
 }
 .MainLogo {
-display: inline-flex;
+display: flex;
 align-items: center;
 justify-content: space-between;
 width: max-content;
-height: max-content;
-background:none;
-box-shadow: 0 0 5px rgb(255, 255, 255), inset 0 0 5px black;
-border-radius: 6px;
-padding: 2px;
+height: 100%;
+background: rgb(45,45,45);
+box-shadow: 0 0 1px rgb(255, 255, 255);
+border-radius: 0 6px 6px 6px;
+padding: 5px;
 gap: 3px;
 cursor: pointer;
+white-space: nowrap;
+text-shadow: 0 0 3px black;
+animation: fall 0.45s ease-in-out;
 }
 .MainLogo img {
-display: inline-flex;
+display: block;
 width: 40px;
 height: 40px;
 user-select: none;
@@ -93,14 +82,16 @@ height: 100%;
 align-items: center;
 justify-content: space-between;
 gap: 10px;
+position: relative;
+animation: fall 0.45s ease-in-out;
 }
 .NavButton {
-display: inline-flex;
+display: flex;
 align-items: center;
 justify-content: center;
 gap: 5px;
-width: 140px;
-height: 30px;
+width: max-content;
+height: 100%;
 background: none;
 box-shadow: 0 0 5px rgb(0, 0, 0);
 border-radius: 30px;
@@ -115,6 +106,8 @@ word-spacing: -2.25px;
 letter-spacing: 0.25px;
 border: 2px solid rgba(240, 240, 240, 0.86);
 user-select: none;
+color: rgb(246, 246, 246);
+padding: 0 15px;
 }
 .NavButton:hover {
 background: rgb(240,240,240, .26);
@@ -177,48 +170,73 @@ background: rgb(240,240,240, .26);
     letter-spacing: 1px;
     font-weight: bolder;
 }
- #BTN-MoreGame-Menu, #BTN-Refresh-Menu , #BTN-FormLoginSingUp-Menu , #BTN-Privacy-Menu {
-    width: 90%;
+ .Wrap-Menu .Menu-BTNS {
+    display: flex;
+    width: 95%;
     height: 50px;
-    background-color: transparent;
-    border-radius: 10px;
-    border: 4px solid rgb(255, 255, 255);
-    box-shadow: 0 0 5px black;
+    background: transparent;
+    border: 6px solid white;
     align-items: center;
     justify-content: center;
-    gap: 0;
+    gap: 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
- #BTN-MoreGame-Menu span, #BTN-Refresh-Menu span, #BTN-FormLoginSingUp-Menu span , #BTN-Privacy-Menu span {
+.Wrap-Menu .Menu-BTNS span {
     font-size: 21px;
     font-weight: bold;
     width: 50%;
     text-align: left;
 }
-#BTN-MoreGame-Menu i, #BTN-Refresh-Menu i, #BTN-FormLoginSingUp-Menu i , #BTN-Privacy-Menu i {
+.Wrap-Menu .Menu-BTNS i{
     font-size: 22px;
 }
-  #BTN-Exit-Menu:hover , #BTN-MoreGame-Menu:hover , #BTN-Refresh-Menu:hover  , #BTN-FormLoginSingUp-Menu:hover , #BTN-Privacy-Menu:hover {
+.Wrap-Menu .Menu-BTNS:hover {
     background: rgba(240, 240, 240, 0.26);
     box-shadow: 0 0 5px white;
 }
-  #BTN-MoreGame-Menu:active , #BTN-Refresh-Menu:active , #BTN-Exit-Menu:active , #BTN-FormLoginSingUp-Menu:active , #BTN-Privacy-Menu:active {
+.Wrap-Menu .Menu-BTNS:active {
     box-shadow: 0 0 5px white, inset 0 0 5px black;
     background: rgba(240, 240, 240, 0.36);
 }
-.Wrap-Menu #BTN-Exit-Menu {
-    width: 90%;
+.Wrap-Menu .Close-Menu {
+    display: flex;
+    width: 80%;
     height: 50px;
-    background-color: transparent;
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-    border: 4px solid rgb(255, 255, 255);
-    box-shadow: 0 0 5px black;
-    font-size: 18px;
-    align-items: center;
-    justify-content: space-around;
-    word-spacing: 5px;
+    background: transparent;
+    border: 6px solid rgb(255, 255, 255);
+    border-radius: 8px;
     position: absolute;
-    bottom: 10px;
+    bottom: 65px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: bolder;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+.Wrap-Menu .Close-Menu .CircleXmark {
+    display: flex;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: 3px solid white;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+.Wrap-Menu .Close-Menu:hover {
+    background: rgb(55,55,55);
+    text-shadow: 0 0 2px white;
+}
+.Wrap-Menu .Close-Menu:active {
+    background: rgb(45,45,45);
+    text-shadow: none;
 }
 h2{
 width: 100%;
@@ -231,7 +249,7 @@ padding: 6px;
 cursor: pointer;
 border: 3px solid  rgba(240, 240, 240, 0.26);
 box-shadow: 0 0 10px  rgb(255, 255, 255);
-transition: all 0.2s linear;
+animation: fall 0.45s ease-in-out;
 }
 .MainGame {
 display: flex;
@@ -599,68 +617,118 @@ opacity: 0;
         position: sticky;
         top: 5px;
     }
-
-}
-@media screen and (max-width: 900px) {
-  
-}
-@media screen and (max-width: 750px) {
-    #BTN-TeaemsPolicy {
-        display: none;
+    header nav {
+        gap: 5px;
+    }
+    header .NavButton {
+        padding: 0 10px;
     }
 
 }
-@media screen and (max-width: 700px) {
- header {
-    padding: 0 3px;
- }
-.MainLogo {
-    width: max-content;
-    height: max-content;
-    padding: 5px auto;
-}
+@media screen and (max-width: 950px) {
+    header nav {
+        gap: 5px;
+    }
+    header .NavButton {
+        font-size: 16px;
+    }
+    #BTN-MoreGame {
+        transform: scale(0);
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    #BTN-Menu {
+        display: flex;
+    }
 
-.MainLogo img  {
-    width: 30px;
-    height: 30px;
 }
-.MainLogo span {
-    width: max-content;
-    height: max-content;
-    padding: 0;
-    font-size: 16px;
+@media screen and (max-width: 850px) {
+    #BTN-Privacy {
+        transform: scale(0);
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
 }
+@media screen and (max-width: 800px) {
+    .Game-Bord .Main-GMB .GM-DTLS .GM-Top-DTLS .GM-TXT {
+        display: block;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+    .Game-Bord .Bottom-GMB .BTN-SNF {
+        font-size: 14px;
+    }
+    .Game-Bord .Bottom-GMB .BTN-SNF-DWN {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 750px) {
+    .Game-Bord .Main-GMB .GM-DTLS .GM-About .GM-SWC .One-TXT {
+        font-size: 14px;
+    }
+    .Game-Bord .Main-GMB .GM-DTLS .GM-About .GM-SWC .Two-TXT {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 700px) {
+ #BTN-MoreGame {
+    transform: scale(0);
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+ }
+
  nav {
     gap:  3px;
     padding: 0;
  }
-.NavButton {
-    font-size: 16px;
-}
 .Wrap-Menu {
     display: none;
 }
-#BTN-Menu {
-    display: none;
+.Game-Bord .Main-GMB .GM-DTLS .GM-Top-DTLS .GM-TXT {
+    font-size: 12px;
+    gap: 0;
+    padding: 1px;
+}
+.Game-Bord .Main-GMB .GM-DTLS .GM-Top-DTLS .GM-IntDownloads {
+    font-size: 12px;
+    gap: 0;
+    padding: 1px;
+}
+.BTN-SNF ,  .BTN-SNF-DWN {
+    align-items: flex-start;
+    justify-content: center;
 }
 }
 @media screen and (max-width: 680px) {
-    #BTN-MoreGame {
-        display: flex;
-    }
-    #BTN-FormLoginSingUp {
-        display: flex;
+    .Games-Wrap .Column-GameBord {
+
+        .Games-Wrap {}
     }
 }
 @media screen and (max-width: 660px) {
-    #BTN-MoreGame {
-        display: none;
-    }
-    #BTN-FormLoginSingUp {
-        display: none;
-    }
-    #BTN-Menu {
-        display: flex;
+    #BTN-AboutUs {
+
+            transform: scale(0);
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        
     }
     .Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs {
         flex-direction: column;
@@ -674,9 +742,15 @@ opacity: 0;
         gap: 15px;
     }
 }
-@media screen and (max-width: 550px) {
-    #BTN-MoreGame , #BTN-Refresh {
-        display: none;
+@media screen and (max-width: 580px) {
+    #BTN-FormLoginSingUp {
+        transform: scale(0);
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
     }
    
     .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .BTN-Scroll {
@@ -694,19 +768,11 @@ opacity: 0;
         padding: 0;
     }
 }
-@media screen and (max-width: 400px) {
-   header .NavButton {
-    width: max-content;
-    height: max-content;
-    padding: 5px;
-    font-size: 16px;
-   }
+@media screen and (max-width: 480px) {
+
    .MainLogo {
-   width: max-content;
-   height: max-content;
-   padding: 2px;
+   padding: 0px;
    gap: 0px;
-   justify-content: space-between;
    }
    .MainLogo span {
     font-size: 16px;
@@ -719,26 +785,42 @@ opacity: 0;
 
    
 }
-@media screen and (max-width: 350px) {
-   
+@media screen and (max-width: 450px) {
+   #BTN-Refresh {
+    transform: scale(0);
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+   }
 }
 .Games-Wrap {
 display: flex;
 width: 100%;
 height: auto;
 align-items: flex-start;
-align-content: flex-start;
-justify-content: center;
+justify-content: flex-start;
 position: relative;
-gap: 20px;
-padding: 30px;
-flex-wrap: wrap;
+flex-direction: column;
 background: none;
-margin: 0;
+gap: 5px;
+overflow-y: hidden;
+}
+.Games-Wrap .Column-GameBord {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    animation: fall 0.45s ease-in-out;
 }
 .Game-Bord {
 display: flex;
-width: 375px;
+width: 350px;
 height: 425px;
 background:  rgb(240,240,240, 0.26);
 align-items: flex-start;
@@ -750,6 +832,7 @@ transition: all 0.3s linear;
 border: 2px solid   rgb(240,240,240, 0.26);
 overflow: hidden;
 margin: 0;
+animation: fall 0.45s ease-in-out;
 }
 .Game-Bord .Top-GMB {
 display: flex;
@@ -758,16 +841,16 @@ height: 50px;
 align-items: center;
 justify-content: space-between;
 background: none;
-padding: 5px 15px;
+padding: 5px;
 }
 .Game-Bord .Top-GMB .GM-IC-TXT {
 display: flex;
 width: max-content;
 height: 100%;
-padding: 5px;
+padding: 3px;
 align-items: center;
 justify-content: space-between;
-gap: 3px;
+gap: 2px;
 user-select: none;
 cursor: pointer;
 border-radius: 6px;
@@ -796,10 +879,10 @@ letter-spacing: 0.15px;
 display: flex;
 width: max-content;
 height: 100%;
-padding: 5px;
+padding: 3px;
 align-items: center;
 justify-content: space-between;
-gap: 8px;
+gap: 3px;
 user-select: none;
 }
 .Game-Bord .Top-GMB .GM-TLS-CLS .BTN-TLS-CLS {
@@ -894,11 +977,10 @@ position: absolute;
 transform: translateY(100%);
 margin: auto;
 transition: all 0.3s cubic-bezier(0.8, 0, 0, 0.5);
-
 background: none;
 pointer-events: stroke;
-padding: 8px;
-gap: 10px;
+padding: 5px;
+gap: 5x;
 cursor: pointer;
 }
 .Game-Bord .Main-GMB .GM-DTLS:active {
@@ -913,28 +995,27 @@ justify-content: space-between;
 
 }
 .Game-Bord .Main-GMB .GM-DTLS .GM-Top-DTLS .GM-TXT {
-display: inline-flex;
+display: flex;
 font-size: 14px;
 font-weight: bold;
 background: rgb(35,35,35);
 box-shadow: 0 0 5px white;
-padding: 5px;
+padding: 3px;
 border-radius: 8px;
 user-select: none;
 text-shadow: 0 0 15px black;
 gap: 3px;
-justify-content: space-around;
+justify-content: space-between;
 align-items: center;
 letter-spacing: 0.15px;
 }
 .Game-Bord .Main-GMB .GM-DTLS .GM-Top-DTLS .GM-IntDownloads {
-display: inline-flex;
+display: flex;
 width: max-content;
 height: max-content;
-padding: 5px;
+padding: 3px;
 background: rgb(35,35,35);
 box-shadow: 0 0 5px white;
-padding: 5px;
 border-radius: 8px;
 user-select: none;
 gap: 2px;
@@ -952,7 +1033,7 @@ text-align: left;
 width: 100%;
 display: flex;
 padding: 0;
-font-size: 17px;
+font-size: 16px;
 font-weight: bold;
 text-shadow: 0 0 10px black;
 }
@@ -984,9 +1065,6 @@ word-spacing: -1px;
 .Game-Bord .Main-GMB .GM-DTLS .GM-About .GM-SWC .One-TXT {
     color: rgb(220, 220, 220);
 }
-.Game-Bord .Main-GMB .GM-DTLS .GM-About .GM-SWC .Two-TXT {
-padding: 0 2px;
-}
 .Game-Bord .Bottom-GMB {
 display: flex;
 width: 100%;
@@ -996,17 +1074,19 @@ justify-content: space-around;
 background: none;
 
 }
-.Game-Bord .Bottom-GMB .BTN-SNF , .BTN-SNF-DWN  {
-display: inline-flex;
+.BTN-SNF , .BTN-SNF-DWN  {
+display: flex;
 width: 100%;
 height: 100%;
 align-items: center;
-justify-content: space-around;
+justify-content: center;
 user-select: none;
 cursor: pointer;
 transition: all 0.12s linear;
 font-weight: bold;
 text-decoration: none;
+padding: 0 3px;
+gap: 5px;
 }
 .Game-Bord .Bottom-GMB .BTN-SNF {
     text-shadow: 0 0 5px black;
@@ -1041,24 +1121,32 @@ box-shadow: inset 0 0 8px black;
 border-radius: 50%;
 }
 .Game-Bord .Bottom-GMB .BTN-SNF i {
-display: inline-flex;
-width: 18px;
-height: 18px;
-border-radius: 50%;
-border: 2px solid white;
-font-size: 14px;
-align-items: center;
-justify-content: center;
+    font-size: 17px;
+}
+.FormSendFeedBack-Mailto {
+    display: flex;
+    width: 400px;
+    height: 400px;
+    background: rgba(240, 240, 240, 0.26);
+    border: 3px solid rgb(240,240,240, .26);
+    border-radius: 8px;
+    box-shadow: 0 0 15px white;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
 }
 .FooterBottom {
     display: flex;
     width: 100%;
-    height: 105px;
-    background: rgba(240,240,240, 0.46);
+    height: 90px;
+    background: rgba(240, 240, 240, 0.26);
+    border-top: 3px solid rgb(240,240,240, .26);
     align-items: center;
     justify-content: center;
     gap: 5px;
- 
 }
 .FooterBottom .FooterInfoTex {
     display: flex;
@@ -1101,6 +1189,7 @@ justify-content: center;
     transition: all 0.3s linear;
     box-shadow: 0 0 15px black, inset 0 0 8px black;
     margin-bottom: 20px;
+    overflow-y: hidden;
 }
 
 .WrapDownPage .TopDownPage {
@@ -1117,6 +1206,7 @@ justify-content: center;
     justify-content: center;
     text-shadow: 0 0 5px black;
     box-shadow: 0 0 5px black;
+    animation: fall 0.45s ease-in-out;
 }
 .WrapDownPage .BoxDownPage {
     display: flex;
@@ -1129,6 +1219,7 @@ justify-content: center;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 0 10px black;
+    overflow-y: hidden;
 }
 .WrapDownPage .BoxDownPage .LF-GM-Box {
     display: flex;
@@ -1149,6 +1240,8 @@ justify-content: center;
     align-items: flex-start;
     justify-content: space-between;
     gap: 5px;
+    overflow-y: hidden;
+    padding: 5px;
 }
 .WrapDownPage .BoxDownPage .LF-GM-Box .Details-GM-Box .Bar-GM-Box {
     display: flex;
@@ -1163,6 +1256,7 @@ justify-content: center;
     border-radius: 6px;
     transition: all 0.16s linear;
     box-shadow: 0 0 5px black;
+    animation: fall 0.45s ease-in-out;
 }
 .WrapDownPage .BoxDownPage .LF-GM-Box .Details-GM-Box .Bar-GM-Box:hover {
     background: rgba(240,240,240, 0.32);
@@ -1193,6 +1287,8 @@ justify-content: center;
     align-items: center;
     justify-content: center;
     gap: 5px;
+    overflow-y: hidden;
+    padding: 5px;
 }
 .WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC {
     display: flex;
@@ -1213,6 +1309,7 @@ justify-content: center;
     text-shadow: 0 0 5px black;
     text-decoration: none;
     color: rgb(240,240,240);
+    animation: fall 0.45s ease-in-out;
 }
 .WrapDownPage .BoxDownPage .LF-GM-Box .SC-Media-Box .BTN-SC i {
     font-size: 22px;
@@ -1264,6 +1361,7 @@ justify-content: center;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+    overflow-y: hidden;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Title-GM-Box {
     display: flex;
@@ -1282,6 +1380,7 @@ justify-content: center;
     border-radius: 6px;
     box-shadow: 0 0 5px black;
     padding: 5px;
+    animation: fall 0.45s ease-in-out;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider {
     display: flex;
@@ -1293,6 +1392,7 @@ justify-content: center;
     justify-content: space-between;
     flex-direction: column;
     gap: 5px;
+    overflow-y: hidden;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video {
     display: flex;
@@ -1301,6 +1401,7 @@ justify-content: center;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    overflow-y: hidden;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .Video-GM-Box {
     display: flex;
@@ -1308,7 +1409,10 @@ justify-content: center;
     height: 100%;
     align-items: center;
     justify-content: center;
-    background-color: none;
+    background-color: transparent;
+    overflow-y: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 15px black;
 }
 
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .Video-GM-Box video {
@@ -1316,11 +1420,11 @@ justify-content: center;
     width: 100%;
     height: 80%;
     border-radius: 10px;
-    box-shadow: 0 0 15px black;
     object-fit: fill;
     border: 2px solid rgba(240, 240, 240, 0.26);
     outline: none;
     cursor: pointer;
+    animation: fall 0.45s ease-in-out;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .BTN-Scroll {
     display: flex;
@@ -1338,6 +1442,7 @@ justify-content: center;
     text-shadow: 0 0 5px black;
     font-weight: bold;
     font-size: 26px;
+    animation: fall 0.45s ease-in-out;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-BTN-Scroll-Video .BTN-Scroll:hover {
     box-shadow: 0 0 5px black, inset 0 0 5px black;
@@ -1363,6 +1468,8 @@ justify-content: center;
     background-color: none;
     align-items: center;
     justify-content: space-around;
+    overflow-y: hidden;
+    padding: 5px;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom  .Scroll-Slider-Buttons {
     display: flex;
@@ -1375,6 +1482,7 @@ justify-content: center;
     border-radius: 6px;
     border: 2px solid rgba(240, 240, 240, 0.26);
     box-shadow: 0 0 10px black;
+    overflow-y: hidden;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .Scroll-Slider-Buttons .BTN-ELM-SLD {
     display: flex;
@@ -1390,6 +1498,7 @@ justify-content: center;
     cursor: pointer;
     user-select: none;
     transition: all 0.2s linear;
+    animation: fall 0.45s ease-in-out;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .Scroll-Slider-Buttons .BTN-ELM-SLD:hover {
     box-shadow: 0 0 8px black, inset 0 0 3px black;
@@ -1413,6 +1522,7 @@ justify-content: center;
     user-select: none;
     text-shadow: 0 0 2px black;
     gap: 5px;
+    animation: fall 0.45s ease-in-out;
 }
 .WrapDownPage .BoxDownPage .RG-GM-Box .Wrap-Scroll-Slider .Wrap-ScrollSlider-Bottom .BTN-DownGame:hover {
     background: rgba(240, 240, 240, 0.36);
@@ -1467,10 +1577,11 @@ justify-content: center;
     border: 2px solid rgba(240, 240, 240, 0.26);
     flex-wrap: wrap;
     box-shadow: 0 0 5px black;
+    overflow-y: hidden;
 }
 
 .WrapDownPage .P-GM-Page p {
-  display: inline-flex;
+  display: flex;
   width: 100%;
   height: auto;
   text-align: left;
@@ -1482,6 +1593,7 @@ justify-content: center;
   padding: 0;
   color: rgb(240,240,240);
   user-select: none;
+  animation: fall 0.45s ease-in-out;
 }
 .WrapDownPage .Comment-GM-Page {
     width: 100%;
@@ -1943,8 +2055,40 @@ form .OrLoginSingUp p {
     background: rgba(240, 240, 240, 0.46);
     box-shadow: 0 0 8px black, inset 0 0 8px rgba(0, 0, 0, 0.62);
 }
-.SuccessForm {
+
+  #WebsiteFormLogin , #WebsiteFormSingUp {
+    display: none;
+  }
+  #WebsiteFormLogin {
     display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    top: 0;
+    margin: auto;
+  }
+  
+  #WebsiteFormSingUp {
+    display: none;
+    transform: translateY(-100%);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 100px;
+    left: 0;
+    margin: auto;
+  }
+  #WebsiteLoginSingUp-FooterBottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+.SuccessForm {
+    display: none;
     width: 55%;
     max-width: 570px;
     height: 55%;
@@ -2249,45 +2393,48 @@ form .OrLoginSingUp p {
    
 }
  .stars {
-      position: fixed;
+    display: none;
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
+  margin: a;
   width: 100%;
   height: 100%;
   background: transparent;
   pointer-events: none;
-  z-index: 2;
   overflow: hidden;
+  padding: 15px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+  white-space: nowrap;
     }
 .star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  animation: fall 3s linear infinite;
+  display: block;
+  width: 300px;
+  height: 280px;
+  animation: fall 3s infinite;
+  background-image: url(image/Background-TXT-2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 @keyframes fall {
   0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
+    transform: translateY(-100%);
+    opacity: 0;
   }
   100% {
-    transform: translateY(100vh) scale(0.5);
-    opacity: 0;
+  
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-/* عد تنازلي */
-.countdown {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 5rem;
-  color: #ffffff;
-  font-weight: bold;
-  z-index: 3;
-}
+
 
     @keyframes moveStars {
       0% { background-position: 0 0; }
@@ -2333,11 +2480,14 @@ form .OrLoginSingUp p {
     border: 4px solid lime;
     border-radius: 8px;
     transition: all 0.3s ease;
-    color: white;
+    color: lime;
+    box-shadow: 0 0 5px black;
+    text-shadow: 0 0 5px black;
     box-shadow: none;
     text-decoration: none;
     gap: 8px;
     word-spacing: -1px;
+    font-weight: bolder;
 }
 .FreeCashBTN:hover {
     background: limegreen;
@@ -2416,7 +2566,7 @@ form .OrLoginSingUp p {
 .Wrap-AboutUs {
     display: flex;
     width: 90%;
-    height: auto;
+    height: 100%;
     background: rgba(240, 240, 240, 0.26);
     border: 4px solid rgba(240, 240, 240, 0.26);
     border-radius: 6px;
@@ -2425,7 +2575,7 @@ form .OrLoginSingUp p {
     flex-wrap: wrap;
     gap: 10px;
     padding: 10px;
-    transition: all 0.3s linear;
+    transition: all 0.3s ease;
     box-shadow: 0 0 15px black, inset 0 0 8px black;
     margin-bottom: 20px;
 }
@@ -2446,16 +2596,17 @@ form .OrLoginSingUp p {
 .Wrap-AboutUs .Main-AboutUs {
     display: flex;
     width: 100%;
-    height: auto;
+    height: 100%;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     gap: 5px;
+    transition: all 0.3s ease;
 }
 .Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia {
     display: flex;
     width: max-content;
-    height: auto;
+    height: max-content;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -2595,7 +2746,7 @@ form .OrLoginSingUp p {
 .Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar {
     display: flex;
     width: 100%;
-    height: max-content;
+    height: 100%;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
@@ -2605,6 +2756,7 @@ form .OrLoginSingUp p {
     padding: 5px;
     gap: 5px;
     box-shadow: 0 0 10px black;
+    transition: all 0.3s ease;
 }
 .Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar {
     display: flex;
@@ -2681,7 +2833,7 @@ form .OrLoginSingUp p {
     overflow: hidden;
     gap: 8px;
 }
-.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar.Hide {
+.Wrap-AboutUs .Main-AboutUs .CoverDetailsBar.Hide{
     height: 0%;
 }
 .Wrap-AboutUs .Main-AboutUs .CoverDetailsBar.Show {
@@ -2750,8 +2902,8 @@ form .OrLoginSingUp p {
 }
 .WrapSuccessWork {
     display: flex;
-    width: 600px;
-    height: 460px;
+    width: 560px;
+    height: 420px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -2766,24 +2918,35 @@ form .OrLoginSingUp p {
     top: 0;
     left: 0;
     margin: auto;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 .WrapSuccessWork:hover {
     box-shadow: 0 0 15px black, inset 0 0 10px white;
 }
 .WrapSuccessWork .SuccessWork-TrueSuccess {
     display: flex;
-    width: 260px;
-    height: 260px;
+    width: 205px;
+    height: 205px;
     align-items: center;
     justify-content: center;
     background: rgba(240,240,240, 0.16);
     border-radius: 50%;
-    border: 3px solid rgba(240,240,240, 0.26);
-    transition: all 0.3s ease;
+    border: 6px solid rgba(240,240,240, 0.26);
+    transition: all 0.3s ease-in-out;
     box-shadow: 0 0 10px black;
-    font-size: 26px;
-    animation: ScaleUp-TrueSuccess 0.46s ease;
+}
+.WrapSuccessWork:hover > .SuccessWork-TrueSuccess {
+    box-shadow:  0 0 10px black, inset 0 0 10px white;
+}
+.WrapSuccessWork .SuccessWork-TrueSuccess i {
+    font-size: 90px;
+    color: rgb(240,240,240, .75);
+    animation: ScaleUp-TrueSuccess 0.46s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0 0 2px black;
+}
+.WrapSuccessWork:hover > .SuccessWork-TrueSuccess i  {
+    text-shadow: 0 0 5px rgb(145, 141, 141);
 }
 @keyframes ScaleUp-TrueSuccess {
     0% {
@@ -2798,6 +2961,8 @@ form .OrLoginSingUp p {
 .WrapSuccessWork h1 {
     text-shadow: 0 0 3px black;
     position: relative;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
 }
 .WrapSuccessWork h1::after {
     content: '';
@@ -2812,7 +2977,14 @@ form .OrLoginSingUp p {
     bottom: -2px;
     margin: auto;
     box-shadow: 0 0 2px black;
+    transition: all 0.3s ease-in-out;
 
+}
+.WrapSuccessWork:hover > h1 {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.76);
+}
+.WrapSuccessWork:hover > h1::after {
+    box-shadow: 0 0 3px white;
 }
 .WrapSuccessWork .SuccessWork-BackToHomeBTN {
     display: flex;
@@ -2822,7 +2994,7 @@ form .OrLoginSingUp p {
     border: 3px solid rgba(240, 240, 240, 0.26);
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 8px;
     text-decoration: none;
     border-radius: 10px;
     box-shadow: 0 0 5px black;
@@ -2834,14 +3006,39 @@ form .OrLoginSingUp p {
     text-shadow: 0 0 3px black;
 }
 .WrapSuccessWork .SuccessWork-BackToHomeBTN:hover {
-    background: rgba(255, 255, 255, 0.86);
-    border-color: rgba(0, 0, 0, 0.86);
-    color: black;
-    text-shadow: none;
+    background: rgba(240,240,240, 0.46);
+    border-color: rgba(240,240,240, 0.46);
+    text-shadow: 0 0 1px white;
 }
 .WrapSuccessWork .SuccessWork-BackToHomeBTN:active {
     background: rgba(240, 240, 240, 0.26);
     border: 3px solid rgba(240, 240, 240, 0.26);
     box-shadow: 0 0 8px black;
-    color: white;
+}
+.WrapSuccessWork .ArrowBackToHome {
+    display: flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 3px solid rgb(250, 250, 250);
+    box-shadow: 0 0 3px black;
+    border-radius: 3px 10px 10px 3px;
+    transition: all 0.3s ease;
+}
+.WrapSuccessWork .ArrowBackToHome i {
+  color: white;
+  transition: all 0.3s ease; 
+  text-shadow: 0 0 3px black;
+  font-size: 15px;
+  
+}
+.WrapSuccessWork .SuccessWork-BackToHomeBTN:hover > .ArrowBackToHome  {
+    border-color: rgba(240,240,240, 0.76);
+    box-shadow: 0 0 2px white;
+}
+.WrapSuccessWork .SuccessWork-BackToHomeBTN:hover > .ArrowBackToHome i {
+    text-shadow: 0 0 1px white;
+    color: rgb(240,240,240, .85);
 }
