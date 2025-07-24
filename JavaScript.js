@@ -117,9 +117,9 @@ function TransformToTop() {
   WrapSuccessWork.style.transform = 'translateY(-100%)';
   WrapSuccessWork.style.opacity = '0';
  // window.location.href = 'index.html';
- window.location.replace('https://the-life-games.vercel.app/');
+ window.open('https://the-life-games.vercel.app/', '_blank');
 }
 function OpenWebsiteLoginSingUp() {
-  window.location.replace('https://the-life-games.vercel.app/LoginSingUp.html');
+  window.open('https://the-life-games.vercel.app/LoginSingUp.html', '_blank');
 }
 
