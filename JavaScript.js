@@ -112,5 +112,14 @@ grecaptcha.ready(function () {
     document.forms[0].appendChild(input);
   });
 });
-
+function TransformToTop() {
+  var WrapSuccessWork = document.querySelector('.WrapSuccessWork');
+  WrapSuccessWork.style.transform = 'translateY(-100%)';
+  WrapSuccessWork.style.opacity = '0';
+ // window.location.href = 'index.html';
+ window.location.replace('https://the-life-games.vercel.app/');
+}
+function OpenWebsiteLoginSingUp() {
+  window.location.replace('https://the-life-games.vercel.app/LoginSingUp.html');
+}
 
