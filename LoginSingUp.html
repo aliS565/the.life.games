@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sing Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=stadia_controller" />
+    <link rel="stylesheet" href='styleWebsite.css' Media='all'>
+    <link rel="icon" href="image/Game_IC.png">
+</head>
+<body>
+    <div class="FormBoxLogin" id="WebsiteFormLogin">
+        <div class="TopTitleAndExitForm">
+        <p>Login Form</p>
+        <div class="CloseForm" id="WebsiteCloseFormBTN" onclick="WebsiteCloseFormLogin()"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <form action="LoginForm.php">
+            <div class="BoxInputForm">
+                <label for="UserName">User Name:</label>
+                <div class="BoxInput">
+                    <div class="IC-INPUT"><i class="fa-solid fa-user"></i></div>
+                    <input type="text" name="uname" id="UserName" placeholder="User Name...">
+                    <div class="IC-Inupt-BTN"><i class="fa-solid fa-info"></i></div>
+                </div>
+            </div>
+            <div class="BoxInputForm">
+                <label for="Password">Password:</label>
+                <div class="BoxInput">
+                    <div class="IC-INPUT"><i class="fa-solid fa-key"></i></div>
+                    <input type="password" name="upass" id="PasswordLogin" placeholder="Password...">
+                    <div class="IC-Inupt-BTN" id="Password-BTN" onclick="PasswordLoginBTN()"><i class="fa-regular fa-eye" id="IC-Eye-Login"></i></div>
+                </div>
+            </div>
+            <div class="ButtonForm">
+            <button type="reset">Reset<i class="fa-solid fa-arrow-rotate-right"></i></button>
+            <button type="submit">Login<i class="fa-regular fa-circle-right"></i></button>
+        </div>
+        <div class="OrLoginSingUp">
+            <p>Or</p>
+            <button type="button" onclick="WebsiteOpenFormSingUpBTN()">Sing Up</button>
+           </div>
+        </form>  
+    </div>
+    <div class="FormBoxSingUp" id="WebsiteFormSingUp">
+        <div class="TopTitleAndExitForm">
+        <p>Sing Up Form</p>
+        <div class="CloseForm" id="WebsiteCloseFormBTN" onclick="WebsiteCloseFormSingUp()"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <form action="SingUpForm.php" required>
+            <div class="BoxInputForm">
+                <label for="UserName">User Name:</label>
+                <div class="BoxInput">
+                    <div class="IC-INPUT"><i class="fa-solid fa-user"></i></div>
+                    <input type="text" name="uname" id="UserName" placeholder="User Name...">
+                    <div class="IC-Inupt-BTN"><i class="fa-solid fa-t"></i></div>
+                </div>
+            </div>
+            <div class="BoxInputForm">
+                <label for="Email">Email Address:</label>
+                <div class="BoxInput">
+                    <div class="IC-INPUT"><i class="fa-solid fa-massage"></i></div>
+                    <input type="email" name="uemail" id="Email" placeholder="Email Address...">
+                    <div class="IC-Inupt-BTN"><i class="fa-solid fa-at"></i></div>
+                </div>
+            </div>
+            <div class="BoxInputForm">
+                <label for="Password">Password:</label>
+                <div class="BoxInput">
+                    <div class="IC-INPUT"><i class="fa-solid fa-key"></i></div>
+                    <input type="password" name="upass" id="PasswordSingUp" placeholder="Password...">
+                    <div class="IC-Inupt-BTN" id="Password-BTN" onclick="PasswordSingUpBTN()"><i class="fa-regular fa-eye" id="IC-Eye-SingUp"></i></div>
+                </div>
+            </div>
+            <div class="BoxInputForm-Gn">
+                <label class="Title-Gender">Gender:</label>
+                <div class="BoxInput-Gn">
+                    <label class="Gn-Input">
+                        <input type="radio" name="gender" value="male" id="genderMale">
+                        <span class="custom-radio"></span>
+                        <div class="Gn-Box">
+                          <i class="fa-solid fa-male"></i>
+                          <span class="LabelGender">Male</span>
+                        </div>
+                      </label>
+                      <label class="Gn-Input">
+                        <input type="radio" name="gender" value="female" id="genderFemale">
+                        <span class="custom-radio"></span>
+                        <div class="Gn-Box">
+                          <i class="fa-solid fa-female"></i>
+                          <span class="LabelGender">Female</span>
+                        </div>
+                      </label>
+                </div>
+                <p class="Text-Note">Please complete all fields to continue download.</p>
+              </div>
+              
+            <div class="ButtonForm">
+            <button type="reset">Reset<i class="fa-solid fa-arrow-rotate-right"></i></button>
+            <button type="submit">Sing Up<i class="fa-regular fa-circle-right"></i></button>
+        </div>
+       <div class="OrLoginSingUp">
+        <p>Or</p>
+        <button type="button" onclick="WebsiteOpenFormLoginpBTN()">Login</button>
+       </div>
+        </form>
+    </div>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDWCZN7G"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+         <div class='FooterBottom' id="WebsiteLoginSingUp-FooterBottom">
+            <div class='FooterInfoText'>More For You:</div>
+            <a href="https://freecash.com/r/LCME1" target="_blank" class='FreeCashBTN'>
+            SingUp In FreeCash & Earn Money
+          <i class="fa-solid fa-coins"></i>
+              </a>
+            <div class='AmountUsersBTN'>عدد الزوار: <span id="visitor-count">0</span></div>
+          </div>
+          <script src="JavaScript.js"></script>
+</body>
+</html>
