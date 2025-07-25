@@ -1,7 +1,7 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 import { getFirestore, collection, addDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
 
@@ -106,8 +106,12 @@ if (signUpForm) {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       console.log("✅ تم إنشاء الحساب:", user);
-
-      // حفظ الاسم والجنس في localStorage
+await setDoc(doc(dbFS, "users", user.uid), {
+        username: username,
+        gender: gender,
+        email: email,
+        createdAt: new Date().toISOString()
+      });
       localStorage.setItem("username", username);
       localStorage.setItem("gender", gender);
 
