@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-import { getFirestore, collection, addDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
 
@@ -89,11 +88,11 @@ window.addEventListener("DOMContentLoaded", () => {
 })();
 
 // ✅ نظام إنشاء حساب وتسجيل دخول
-const signUpForm = document.getElementById('FormLogIn');
-const loginForm = document.getElementById('FormSingUp');
+const signUpForm = document.getElementById('FormSingUp');
+const loginForm = document.getElementById('FormLogIn');
 
 // ✅ تسجيل حساب جديد
-if (FormLogIn) {
+if (signUpForm) {
   signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = signUpForm.querySelector('input[name="uname"]').value.trim();
@@ -128,7 +127,7 @@ await setDoc(doc(dbFS, "users", user.uid), {
 }
 
 // ✅ تسجيل الدخول
-if (FormSingUp) {
+if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = loginForm.querySelector('input[name="uname"]').value.trim(); // لاحظ uname هو email
