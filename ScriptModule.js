@@ -10,7 +10,7 @@ const firebaseConfig = {
   authDomain: "thelifegamesvisitors.firebaseapp.com",
   databaseURL: "https://thelifegamesvisitors-default-rtdb.firebaseio.com",
   projectId: "thelifegamesvisitors",
-  storageBucket: "thelifegamesvisitors.firebasestorage.app",
+  storageBucket: "thelifegamesvisitors.appspot.com",
   messagingSenderId: "452655494921",
   appId: "1:452655494921:web:7a713d52f612e3724385d8",
   measurementId: "G-M0FV9P25PP"
@@ -21,7 +21,7 @@ const dbRTDB = getDatabase(app);
 const dbFS = getFirestore(app);
 
 // ✅ تفعيل App Check باستخدام reCAPTCHA v3
-const appCheck = initializeAppCheck(app, {
+initializeAppCheck(app, {
   provider: new ReCaptchaV3Provider('6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm'),
   isTokenAutoRefreshEnabled: true
 });
@@ -37,7 +37,7 @@ onValue(visitorsRef, (snapshot) => {
   if (el) el.textContent = count;
 });
 
-// === تسجيل الزائر في Firestore مع معلومات الجهاز والمتصفح ===
+// ✅ تسجيل الزائر في Firestore مع معلومات المتصفح والموقع
 (async () => {
   try {
     const res = await fetch("https://ipapi.co/json/");
@@ -67,8 +67,8 @@ onValue(visitorsRef, (snapshot) => {
 
     const docRef = await addDoc(collection(dbFS, "visitors"), visitData);
     sessionStorage.setItem("visitorDocId", docRef.id);
-    const start = Date.now();
 
+    const start = Date.now();
     window.addEventListener("beforeunload", async () => {
       const duration = Math.round((Date.now() - start) / 1000);
       const id = sessionStorage.getItem("visitorDocId");
