@@ -8,6 +8,8 @@ var SuccessForm = document.querySelector('.SuccessForm');
 var MainSuccessForm = document.querySelector('.SuccessForm .Main-SuccessForm');
 var AboutUs_CoverDetialsBar = document.querySelector('.CoverDetailsBar'); 
 var AboutUs_DetialsShowHideBTN = document.querySelector('.Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar .Top-DetialsBar .AboutUs-DetialsShowHide-BTN');
+const WebsiteFormSingIn = document.getElementById('WebsiteFormLogin');
+const WebsiteFormSingUp = document.getElementById('WebsiteFormSingUp');
 function OpenMenu() {
         WrapMenu.style.transform = 'translateY(0)';
         WrapMenu.style.opacity = '1';
@@ -84,6 +86,38 @@ function PasswordLoginBTN() {
       eyeIconSingUp.classList.add('fa-eye');
     }
   }
+function WebsiteCloseFormLogin() {
+  WebsiteFormSingIn.style.transform = 'translateY(-100%)';
+  WebsiteFormSingIn.style.opacity = '0';
+  WebsiteFormSingIn.style.display = 'none';
+}
+
+function WebsiteCloseFormSingUp() {
+  WebsiteFormSingUp.style.transform = 'translateY(-100%)';
+  WebsiteFormSingUp.style.opacity = '0';
+  WebsiteFormSingUp.style.display = 'none';
+}
+
+function WebsiteOpenFormSingUpBTN() {
+  WebsiteFormSingIn.style.transform = 'translateY(-100%)';
+  WebsiteFormSingIn.style.opacity = '0';
+  WebsiteFormSingIn.style.display = 'none';
+
+  WebsiteFormSingUp.style.display = 'flex';
+  WebsiteFormSingUp.style.transform = 'translateY(0)';
+  WebsiteFormSingUp.style.opacity = '1';
+}
+
+function WebsiteOpenFormLoginpBTN() {
+  WebsiteFormSingUp.style.transform = 'translateY(-100%)';
+  WebsiteFormSingUp.style.opacity = '0';
+  WebsiteFormSingUp.style.display = 'none';
+
+  WebsiteFormSingIn.style.display = 'flex';
+  WebsiteFormSingIn.style.transform = 'translateY(0)';
+  WebsiteFormSingIn.style.opacity = '1';
+}
+
 function CloseSuccessForm() {
   // 1. ابدأ أنيميشن اختفاء SuccessForm لأعلى
   SuccessForm.classList.add('hide');
