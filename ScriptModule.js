@@ -1,10 +1,10 @@
-// استيراد مكتبات Firebase
+// === استيراد مكتبات Firebase ===
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getFirestore, collection, addDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
 
-// إعداد Firebase
+// === إعداد Firebase ===
 const firebaseConfig = {
   apiKey: "AIzaSyBnA0eYHQbR8gfrkjXn0mEtwSh0MCHJpfU",
   authDomain: "thelifegamesvisitors.firebaseapp.com",
@@ -17,52 +17,41 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const dbVisitor = getDatabase(app);
-const dbFirestore = getFirestore(app);
-export { dbFirestore };
+const dbRTDB = getDatabase(app);
+const dbFS = getFirestore(app);
 
-// ✅ App Check باستخدام reCAPTCHA v3 (استخدم مفتاح الموقع الخاص بك)
+// ✅ تفعيل App Check باستخدام reCAPTCHA v3
 const appCheck = initializeAppCheck(app, {
   provider: new ReCaptchaV3Provider('6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm'),
   isTokenAutoRefreshEnabled: true
 });
 
 // ✅ تسجيل الزائر في Realtime Database
-const visitorsRef = ref(dbVisitor, 'visitors');
+const visitorsRef = ref(dbRTDB, 'visitors');
 push(visitorsRef, { timestamp: new Date().toISOString() });
 
-// ✅ عرض عدد الزوار على العنصر الذي يحتوي id="visitor-count"
+// ✅ عرض عدد الزوار في عنصر بـ id="visitor-count"
 onValue(visitorsRef, (snapshot) => {
-  const count = snapshot.val() ? Object.keys(snapshot.val()).length : 0;
+  const count = snapshot.exists() ? Object.keys(snapshot.val()).length : 0;
   const el = document.getElementById("visitor-count");
   if (el) el.textContent = count;
 });
-// tracker.js
-// tracker.js
-import { dbFirestore } from './firebase-config.js';
-import {
-  collection,
-  addDoc,
-  doc,
-  updateDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+// === تسجيل الزائر في Firestore مع معلومات الجهاز والمتصفح ===
 (async () => {
   try {
     const res = await fetch("https://ipapi.co/json/");
     const ipData = await res.json();
 
-    // ⬅️ المتصفح ونوع الجهاز
     const userAgent = navigator.userAgent;
     const browser = (() => {
+      if (/Edg/.test(userAgent)) return "Edge";
       if (/Chrome/.test(userAgent)) return "Chrome";
       if (/Firefox/.test(userAgent)) return "Firefox";
-      if (/Safari/.test(userAgent) && !/Chrome/.test(userAgent)) return "Safari";
-      if (/Edge/.test(userAgent)) return "Edge";
+      if (/Safari/.test(userAgent)) return "Safari";
       return "Unknown";
     })();
-
-    const deviceType = /Mobi|Android/i.test(userAgent) ? "Mobile" : "Desktop";
+    const deviceType = /Mobi|Android/i.test(userAgent) ? "📱 موبايل" : "💻 كمبيوتر";
 
     const visitData = {
       ip: ipData.ip,
@@ -76,8 +65,7 @@ import {
       duration: 0
     };
 
-    const docRef = await addDoc(collection(dbFirestore, "visitors"), visitData);
-
+    const docRef = await addDoc(collection(dbFS, "visitors"), visitData);
     sessionStorage.setItem("visitorDocId", docRef.id);
     const start = Date.now();
 
@@ -85,15 +73,16 @@ import {
       const duration = Math.round((Date.now() - start) / 1000);
       const id = sessionStorage.getItem("visitorDocId");
       if (id) {
-        await updateDoc(doc(db, "visitors", id), { duration });
+        await updateDoc(doc(dbFS, "visitors", id), { duration });
       }
     });
-  } catch (e) {
-    console.error("Error logging visitor:", e);
+
+  } catch (err) {
+    console.error("🔥 خطأ أثناء تسجيل بيانات الزائر:", err);
   }
 })();
 
-// ✅ Google Tag Manager (اختياري، يُفضّل وضعه في الـ <head> و<noscript> في <body>)
+// ✅ Google Tag Manager (يفضّل أن يكون هذا الجزء في <head> و <noscript> في <body>)
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
