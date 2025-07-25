@@ -93,7 +93,7 @@ const signUpForm = document.getElementById('FormLogIn');
 const loginForm = document.getElementById('FormSingUp');
 
 // ✅ تسجيل حساب جديد
-if (signUpForm) {
+if (FormLogIn) {
   signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = signUpForm.querySelector('input[name="uname"]').value.trim();
@@ -128,7 +128,7 @@ await setDoc(doc(dbFS, "users", user.uid), {
 }
 
 // ✅ تسجيل الدخول
-if (loginForm) {
+if (FormSingUp) {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = loginForm.querySelector('input[name="uname"]').value.trim(); // لاحظ uname هو email
