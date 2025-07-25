@@ -89,8 +89,8 @@ window.addEventListener("DOMContentLoaded", () => {
 })();
 
 // ✅ نظام إنشاء حساب وتسجيل دخول
-const signUpForm = document.querySelector('#WebsiteFormSingUp form');
-const loginForm = document.querySelector('#WebsiteFormLogin form');
+const signUpForm = document.getElementById('FormLogIn');
+const loginForm = document.getElementById('FormSingUp');
 
 // ✅ تسجيل حساب جديد
 if (signUpForm) {
