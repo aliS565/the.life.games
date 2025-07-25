@@ -106,8 +106,12 @@ if (signUpForm) {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       console.log("✅ تم إنشاء الحساب:", user);
-
-      // حفظ الاسم والجنس في localStorage
+await setDoc(doc(dbFS, "users", user.uid), {
+        username: username,
+        gender: gender,
+        email: email,
+        createdAt: new Date().toISOString()
+      });
       localStorage.setItem("username", username);
       localStorage.setItem("gender", gender);
 
