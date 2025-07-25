@@ -21,11 +21,13 @@ const dbRTDB = getDatabase(app);
 const dbFS = getFirestore(app);
 const auth = getAuth(app);
 
+const app = initializeApp(firebaseConfig);
 // ✅ تفعيل App Check باستخدام reCAPTCHA v3
-initializeAppCheck(app, {
+const appCheck = initializeAppCheck(app, {
   provider: new ReCaptchaV3Provider('6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm'),
   isTokenAutoRefreshEnabled: true
 });
+
 
 // ✅ تسجيل الزائر في Realtime Database
 const visitorsRef = ref(dbRTDB, 'visitors');
