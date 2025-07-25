@@ -38,6 +38,7 @@ onValue(visitorsRef, (snapshot) => {
   if (el) el.textContent = count;
 });
 // tracker.js
+// tracker.js
 import { dbFirestore } from './firebase-config.js';
 import {
   collection,
@@ -51,6 +52,18 @@ import {
     const res = await fetch("https://ipapi.co/json/");
     const ipData = await res.json();
 
+    // ⬅️ المتصفح ونوع الجهاز
+    const userAgent = navigator.userAgent;
+    const browser = (() => {
+      if (/Chrome/.test(userAgent)) return "Chrome";
+      if (/Firefox/.test(userAgent)) return "Firefox";
+      if (/Safari/.test(userAgent) && !/Chrome/.test(userAgent)) return "Safari";
+      if (/Edge/.test(userAgent)) return "Edge";
+      return "Unknown";
+    })();
+
+    const deviceType = /Mobi|Android/i.test(userAgent) ? "Mobile" : "Desktop";
+
     const visitData = {
       ip: ipData.ip,
       city: ipData.city,
@@ -58,6 +71,8 @@ import {
       country: ipData.country_name,
       page: window.location.pathname,
       timestamp: new Date().toISOString(),
+      browser,
+      device: deviceType,
       duration: 0
     };
 
