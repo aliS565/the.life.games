@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 import { getFirestore, collection, addDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
 
 // === إعداد Firebase ===
@@ -19,6 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const dbRTDB = getDatabase(app);
 const dbFS = getFirestore(app);
+const auth = getAuth(app);
 
 // ✅ تفعيل App Check باستخدام reCAPTCHA v3
 initializeAppCheck(app, {
@@ -82,6 +84,59 @@ onValue(visitorsRef, (snapshot) => {
   }
 })();
 
+// ✅ نظام إنشاء حساب وتسجيل دخول
+const signUpForm = document.querySelector('#WebsiteFormSingUp form');
+const loginForm = document.querySelector('#WebsiteFormLogin form');
+
+// ✅ تسجيل حساب جديد
+if (signUpForm) {
+  signUpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = signUpForm.querySelector('input[name="uname"]').value.trim();
+    const email = signUpForm.querySelector('input[name="uemail"]').value.trim();
+    const password = signUpForm.querySelector('input[name="upass"]').value;
+    const gender = signUpForm.querySelector('input[name="gender"]:checked')?.value;
+
+    if (!username || !email || !password || !gender) {
+      alert("يرجى ملء جميع الحقول.");
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log("✅ تم إنشاء الحساب:", user);
+
+      // حفظ الاسم والجنس في localStorage
+      localStorage.setItem("username", username);
+      localStorage.setItem("gender", gender);
+
+      alert("تم إنشاء الحساب وتسجيل الدخول بنجاح");
+      window.location.href = "https://the-life-games.vercel.app/";
+    } catch (error) {
+      alert("❌ " + error.message);
+    }
+  });
+}
+
+// ✅ تسجيل الدخول
+if (loginForm) {
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = loginForm.querySelector('input[name="uname"]').value.trim(); // لاحظ uname هو email
+    const password = loginForm.querySelector('input[name="upass"]').value;
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log("✅ تسجيل الدخول:", user);
+      alert("تم تسجيل الدخول بنجاح");
+       window.location.href = "https://the-life-games.vercel.app/";
+    } catch (error) {
+      alert("❌ " + error.message);
+    }
+  });
+}
 // ✅ Google Tag Manager (يفضّل أن يكون هذا الجزء في <head> و <noscript> في <body>)
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
