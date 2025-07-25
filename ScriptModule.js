@@ -33,10 +33,14 @@ const visitorsRef = ref(dbRTDB, 'visitors');
 push(visitorsRef, { timestamp: new Date().toISOString() });
 
 // ✅ عرض عدد الزوار في عنصر بـ id="visitor-count"
-onValue(visitorsRef, (snapshot) => {
-  const count = snapshot.exists() ? Object.keys(snapshot.val()).length : 0;
-  const el = document.getElementById("visitor-count");
-  if (el) el.textContent = count;
+// ✅ عرض عدد الزوار بعد التأكد من تحميل DOM
+window.addEventListener("DOMContentLoaded", () => {
+  const visitorsRef = ref(dbRTDB, 'visitors');
+  onValue(visitorsRef, (snapshot) => {
+    const count = snapshot.exists() ? Object.keys(snapshot.val()).length : 0;
+    const el = document.getElementById("visitor-count");
+    if (el) el.textContent = count;
+  });
 });
 
 // ✅ تسجيل الزائر في Firestore مع معلومات المتصفح والموقع
@@ -140,8 +144,7 @@ if (loginForm) {
       alert("❌ " + error.message);
     }
   });
-}
-// ✅ Google Tag Manager (يفضّل أن يكون هذا الجزء في <head> و <noscript> في <body>)
+
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
