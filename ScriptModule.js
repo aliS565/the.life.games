@@ -97,7 +97,7 @@ const gender = signUpForm.qurySelector('input[name="gender"]:checked')?.value;
 const SubmitButtonLogin = document.getElementById('SubmitButtonLogin');
 const SubmitButtonSingUp = document.getElementById('SubmitButtonSingUp');
 
-SubmitButtonSingUp.addEventListener('click' function <event> {
+SubmitButtonSingUp.addEventListener('click', function <event> {
   event.preventDefault();
   const user = userCredential.user;
   const email = document.getElementById('email').value;
