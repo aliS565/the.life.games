@@ -92,17 +92,17 @@ window.addEventListener("DOMContentLoaded", () => {
 // ✅ نظام إنشاء حساب وتسجيل دخول
 const signUpForm = document.getElementById('FormSingUp');
 const loginForm = document.getElementById('FormLogIn');
-const username = document.getElementById('username').value;
-const email = document.getElementById('email').value;
 const password = document.getElementById('password').value;
 const gender = signUpForm.qurySelector('input[name="gender"]:checked')?.value;
 const SubmitButtonLogin = document.getElementById('SubmitButtonLogin');
 const SubmitButtonSingUp = document.getElementById('SubmitButtonSingUp');
 
 SubmitButtonSingUp.addEventListener('click' function <event> {
-  event.preventDefault()
+  event.preventDefault();
+  const user = userCredential.user;
+  const email = document.getElementById('email').value;
  createUserWithEmailAndPassword(auth, email, password, gender).then((userCredential) => {
-   const user = userCredential.user;
+const password = document.getElementById('password').value;
   alert('Creating Emaill');
  }).catch((error) => {
   const errorCode = error.code;
