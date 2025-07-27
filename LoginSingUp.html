@@ -167,11 +167,12 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com
 // });
 
   // ✅ تفعيل App Check (reCAPTCHA v3)
+window.grecaptcha.ready(() => {
   initializeAppCheck(app, {
     provider: new ReCaptchaV3Provider('6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm'),
     isTokenAutoRefreshEnabled: true
   });
-
+});
   // ✅ تسجيل الزائر في Realtime Database
   const visitorsRef = ref(dbRTDB, 'visitors');
   push(visitorsRef, { timestamp: new Date().toISOString() });
