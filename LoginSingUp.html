@@ -13,7 +13,7 @@
       <script async src="https://cdn.ampproject.org/v0.js"></script>
       <script async custom-element="amp-auto-ads"
             src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
-<script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm"></script>
     <!-- Google AdSense Auto Ads -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5330413892781018"
      crossorigin="anonymous"></script>
@@ -132,7 +132,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class='AmountUsersBTN'>عدد الزوار: <span id="visitor-count">0</span></div>
           </div>
           <script src="JavaScript.js"></script>
-    <!-- Firebase الكود داخل ملف HTML أو JS -->
+  <script>
+  window.onload = function () {
+    if (window.grecaptcha) {
+      grecaptcha.ready(function () {
+        console.log("reCAPTCHA جاهز ✅");
+      });
+    } else {
+      console.error("grecaptcha غير متوفر ❌");
+    }
+  };
+</script>
+
 <script type="module">
 
   // ✅ استيراد مكتبات Firebase (نفس النسخة)
@@ -140,6 +151,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { addDoc, setDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
   // ✅ إعداد Firebase
@@ -165,15 +177,6 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com
   //  window.location.href = "/";
  // }
 // });
-
-  // ✅ تفعيل App Check (reCAPTCHA v3)
-window.grecaptcha.ready(() => {
-  initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider('6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm'),
-    isTokenAutoRefreshEnabled: true
-  });
-});
-  // ✅ تسجيل الزائر في Realtime Database
   const visitorsRef = ref(dbRTDB, 'visitors');
   push(visitorsRef, { timestamp: new Date().toISOString() });
 
