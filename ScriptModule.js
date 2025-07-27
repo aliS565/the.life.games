@@ -92,44 +92,23 @@ window.addEventListener("DOMContentLoaded", () => {
 // ✅ نظام إنشاء حساب وتسجيل دخول
 const signUpForm = document.getElementById('FormSingUp');
 const loginForm = document.getElementById('FormLogIn');
+const username = document.getElementById('username').value;
+const email = document.getElementById('email').value;
+const password = document.getElementById('password').value;
+const gender = signUpForm.qurySelector('input[name="gender"]:checked')?.value;
+const SubmitButtonLogin = document.getElementById('SubmitButtonLogin');
+const SubmitButtonSingUp = document.getElementById('SubmitButtonSingUp');
 
-// ✅ تسجيل حساب جديد
-if (signUpForm) {
-  signUpForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const username = signUpForm.querySelector('input[name="uname"]').value.trim();
-    const email = signUpForm.querySelector('input[name="uemail"]').value.trim();
-    const password = signUpForm.querySelector('input[name="upass"]').value;
-    const gender = signUpForm.querySelector('input[name="gender"]:checked')?.value;
-
-    if (!username || !email || !password || !gender) {
-      alert("يرجى ملء جميع الحقول.");
-      return;
-    }
-
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log("✅ تم إنشاء الحساب:", user);
-       alert("✅ تم إنشاء الحسالب بنجاح", user);
-await setDoc(doc(dbFS, "users", user.uid), {
-        username: username,
-        gender: gender,
-        email: email,
-        createdAt: new Date().toISOString()
-      });
-      localStorage.setItem("username", username);
-      localStorage.setItem("gender", gender);
-
-      alert("✅ تم إنشاء الحسالب بنجاح", user);
-      window.location.href = "https://the-life-games.vercel.app/";
-    } catch (error) {
-      alert("❌ " + error.message);
-    }
-  });
-}
-
-// ✅ تسجيل الدخول
+SubmitButtonSingUp.addEventListener('click' function <event> {
+  event.preventDefault()
+ createUserWithEmailAndPassword(auth, email, password, gender).then((userCredential) => {
+   const user = userCredential.user;
+  alert('Creating Emaill');
+ }).catch((error) => {
+  const errorCode = error.code;
+  const errorMessage = error.message;
+  alert(errorMassage);
+})
 if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
