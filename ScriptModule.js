@@ -1,22 +1,24 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
 import { getFirestore, collection, addDoc, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
 
-// === إعداد Firebase ===
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBnA0eYHQbR8gfrkjXn0mEtwSh0MCHJpfU",
   authDomain: "thelifegamesvisitors.firebaseapp.com",
   databaseURL: "https://thelifegamesvisitors-default-rtdb.firebaseio.com",
   projectId: "thelifegamesvisitors",
-  storageBucket: "thelifegamesvisitors.appspot.com",
+  storageBucket: "thelifegamesvisitors.firebasestorage.app",
   messagingSenderId: "452655494921",
   appId: "1:452655494921:web:7a713d52f612e3724385d8",
   measurementId: "G-M0FV9P25PP"
 };
 
-const app = initializeApp(firebaseConfig);
+ const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const dbRTDB = getDatabase(app);
 const dbFS = getFirestore(app);
 const auth = getAuth(app);
