@@ -1,13 +1,12 @@
 
 
   // ✅ استيراد مكتبات Firebase (نفس النسخة)
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-  import { getFirestore, collection, addDoc, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-  import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
   // ✅ إعداد Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyBnA0eYHQbR8gfrkjXn0mEtwSh0MCHJpfU",
@@ -26,13 +25,19 @@
   const dbRTDB = getDatabase(app);
   const dbFS = getFirestore(app);
   const auth = getAuth(app);
+//onAuthStateChanged(auth, (user) => {
+ // if (!user) {
+  //  window.location.href = "/";
+ // }
+// });
 
   // ✅ تفعيل App Check (reCAPTCHA v3)
+window.grecaptcha.ready(() => {
   initializeAppCheck(app, {
     provider: new ReCaptchaV3Provider('6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm'),
     isTokenAutoRefreshEnabled: true
   });
-
+});
   // ✅ تسجيل الزائر في Realtime Database
   const visitorsRef = ref(dbRTDB, 'visitors');
   push(visitorsRef, { timestamp: new Date().toISOString() });
@@ -103,7 +108,7 @@
       submitSignUp.addEventListener('click', async (event) => {
         event.preventDefault();
 
-        const email = document.getElementById('email')?.value.trim();
+        const email = document.getElementById('emailSignUp')?.value.trim();
         const password = document.getElementById('password')?.value;
         const gender = signUpForm?.querySelector('input[name="gender"]:checked')?.value;
 
@@ -134,7 +139,7 @@
     if (loginForm) {
       loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const email = loginForm.querySelector('input[name="uemail"]')?.value.trim();
+       const email = loginForm.querySelector('#emailLogin')?.value.trim();
         const password = loginForm.querySelector('input[name="upass"]')?.value;
 
         if (!email || !password) {
@@ -152,4 +157,3 @@
       });
     }
   });
-
