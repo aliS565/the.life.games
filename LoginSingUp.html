@@ -13,7 +13,6 @@
       <script async src="https://cdn.ampproject.org/v0.js"></script>
       <script async custom-element="amp-auto-ads"
             src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
-<script>
 <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm"></script>
     <!-- Google AdSense Auto Ads -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5330413892781018"
@@ -36,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <label for="email">Email Address:</label>
                 <div class="BoxInput">
                     <div class="IC-INPUT"><i class="fa-solid fa-user"></i></div>
-                    <input type="email" name="uemail" id="email" placeholder="Email Address...">
+                   <input type="email" name="uemail" id="emailLogin" placeholder="Email Address...">
                     <div class="IC-Inupt-BTN"><i class="fa-solid fa-info"></i></div>
                 </div>
             </div>
@@ -50,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <div class="ButtonForm">
             <button type="reset">Reset<i class="fa-solid fa-arrow-rotate-right"></i></button>
-            <button type="submit">Login<i class="fa-regular fa-circle-right"></i></button>
+            <button type="submit" id="SubmitButtonLogin">Login<i class="fa-regular fa-circle-right"></i></button>
         </div>
         <div class="OrLoginSingUp">
             <p>Or</p>
@@ -76,7 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <label for="Email">Email Address:</label>
                 <div class="BoxInput">
                     <div class="IC-INPUT"><i class="fa-solid fa-massage"></i></div>
-                    <input type="email" name="uemail" id="email" placeholder="Email Address...">
+               <input type="email" name="uemail" id="emailSignUp" placeholder="Email Address...">
                     <div class="IC-Inupt-BTN"><i class="fa-solid fa-at"></i></div>
                 </div>
             </div>
@@ -113,7 +112,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               
             <div class="ButtonForm">
             <button type="reset">Reset<i class="fa-solid fa-arrow-rotate-right"></i></button>
-            <button type="submit">Sing Up<i class="fa-regular fa-circle-right"></i></button>
+            <button type="submit" id="SubmitButtonSingUp">Sign Up<i class="fa-regular fa-circle-right"></i></button>
         </div>
        <div class="OrLoginSingUp">
         <p>Or</p>
@@ -137,13 +136,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="module">
 
   // ✅ استيراد مكتبات Firebase (نفس النسخة)
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { initializeApp } from "firebase/app";
   import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
   import { getFirestore, collection, addDoc, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
-
   // ✅ إعداد Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyBnA0eYHQbR8gfrkjXn0mEtwSh0MCHJpfU",
@@ -162,6 +160,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const dbRTDB = getDatabase(app);
   const dbFS = getFirestore(app);
   const auth = getAuth(app);
+//onAuthStateChanged(auth, (user) => {
+ // if (!user) {
+  //  window.location.href = "/";
+ // }
+// });
 
   // ✅ تفعيل App Check (reCAPTCHA v3)
   initializeAppCheck(app, {
@@ -239,7 +242,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       submitSignUp.addEventListener('click', async (event) => {
         event.preventDefault();
 
-        const email = document.getElementById('email')?.value.trim();
+        const email = document.getElementById('emailSignUp')?.value.trim();
         const password = document.getElementById('password')?.value;
         const gender = signUpForm?.querySelector('input[name="gender"]:checked')?.value;
 
@@ -270,7 +273,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (loginForm) {
       loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const email = loginForm.querySelector('input[name="uemail"]')?.value.trim();
+       const email = loginForm.querySelector('#emailLogin')?.value.trim();
         const password = loginForm.querySelector('input[name="upass"]')?.value;
 
         if (!email || !password) {
