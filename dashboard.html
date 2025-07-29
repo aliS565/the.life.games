@@ -78,13 +78,16 @@
           <th>الوقت</th>
         </tr>
       </thead>
+      <input type="text" id="visitorSearch" placeholder="🔍 ابحث في الزوار..." style="width:100%; padding:8px; margin: 10px 0; border-radius:6px; border:none;">
       <tbody id="visitorBody">
         <!-- الزوار هنا -->
       </tbody>
     </table>
   </div>
-<h2>📋 الحسابات المسجلة</h2>
-<div id="users-list" style="margin-top: 20px;"></div>
+
+  <h2>📋 الحسابات المسجلة</h2>
+  <input type="text" id="userSearch" placeholder="🔍 ابحث في الحسابات..." style="width:100%; padding:8px; margin: 10px 0; border-radius:6px; border:none;">
+  <div id="users-list" style="margin-top: 20px;"></div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -187,17 +190,71 @@
       });
     }
 
+    async function loadRegisteredUsers() {
+      const usersList = document.getElementById("users-list");
+      usersList.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>👤 اسم المستخدم</th>
+              <th>📧 البريد الإلكتروني</th>
+              <th>🚻 النوع</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody"></tbody>
+        </table>
+      `;
+
+      const tableBody = document.getElementById("usersTableBody");
+
+      const querySnapshot = await getDocs(collection(db, "users"));
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${data.username || "-"}</td>
+          <td>${data.email || "-"}</td>
+          <td>${data.gender || "-"}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
     // السماح فقط للمسؤول
     onAuthStateChanged(auth, (user) => {
       if (!user || user.email !== "admin@gmail.com") {
         window.location.href = "/LoginSingUp.html";
       } else {
         loadVisitorData();
+        loadRegisteredUsers();
       }
     });
 
-    // زر تحديث البيانات
-    document.getElementById("refreshBtn").addEventListener("click", loadVisitorData);
+    document.getElementById("refreshBtn").addEventListener("click", () => {
+      loadVisitorData();
+      loadRegisteredUsers();
+    });
+    // البحث في جدول الزوار
+document.getElementById("visitorSearch").addEventListener("input", function () {
+  const searchValue = this.value.toLowerCase();
+  const rows = document.querySelectorAll("#visitorBody tr");
+  rows.forEach((row) => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(searchValue) ? "" : "none";
+  });
+});
+
+// البحث في جدول الحسابات
+document.getElementById("userSearch").addEventListener("input", function () {
+  const searchValue = this.value.toLowerCase();
+  const rows = document.querySelectorAll("#usersTableBody tr");
+  rows.forEach((row) => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(searchValue) ? "" : "none";
+  });
+});
+
   </script>
+  <script src='ScriptModule.js'></script>
 </body>
 </html>
