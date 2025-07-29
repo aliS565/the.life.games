@@ -5,7 +5,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { addDoc, setDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
   // ✅ إعداد Firebase
@@ -102,13 +101,12 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com
     if (submitSignUp) {
       submitSignUp.addEventListener('click', async (event) => {
         event.preventDefault();
-        
-        const username = document.getElementById("UserName")?.value.trim();
+
         const email = document.getElementById('emailSignUp')?.value.trim();
         const password = document.getElementById('password')?.value;
         const gender = signUpForm?.querySelector('input[name="gender"]:checked')?.value;
 
-        if (!username || !email || !password || !gender) {
+        if (!email || !password || !gender) {
           alert("❌ من فضلك أكمل كل الحقول.");
           return;
         }
