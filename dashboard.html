@@ -221,7 +221,7 @@
 
     // السماح فقط للمسؤول
     onAuthStateChanged(auth, (user) => {
-      if (!user || user.email !== "admin@gmail.com") {
+      if (!user || user.email !== "the.life.games010@gmail.com") {
         window.location.href = "/LoginSingUp.html";
       } else {
         loadVisitorData();
