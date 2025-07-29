@@ -127,8 +127,6 @@ function CloseSuccessForm() {
     MainSuccessForm.style.height = '0';
   }, 1000); // متزامن مع transition: 1s
 }
-
-CloseSuccessFormBtN.addEventListener('click', CloseSuccessForm);
 function AboutUsShowHideDetials() {
     AboutUs_CoverDetialsBar.classList.add('Hide');
 }
