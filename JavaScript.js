@@ -130,7 +130,6 @@ function CloseSuccessForm() {
 function AboutUsShowHideDetials() {
     AboutUs_CoverDetialsBar.classList.add('Hide');
 }
-AboutUs_DetialsShowHideBTN.addEventListener('click', AboutUsShowHideDetials);
 grecaptcha.ready(function () {
   grecaptcha.execute('6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm', { action: 'submit' }).then(function (token) {
     // يمكنك الآن إرسال هذا التوكين إلى Firebase App Check أو للسيرفر الخاص بك
