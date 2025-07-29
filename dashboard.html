@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>لوحة تحكم الزوار</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #00d0ff;
+      margin-bottom: 20px;
+    }
+    canvas {
+      background: #1e1e1e;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 40px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+    th {
+      background-color: #272727;
+      color: #00d0ff;
+    }
+    tr:hover {
+      background-color: #2a2a2a;
+    }
+    button {
+      background-color: #00d0ff;
+      color: #121212;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 768px) {
+      table, th, td {
+        font-size: 12px;
+        word-break: break-word;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 لوحة تحكم الزوار</h1>
+  <h2>👥 عدد الزوار الجدد اليوم: <span id="todayCount">0</span></h2>
+  <button id="refreshBtn">🔁 تحديث البيانات</button>
+  <canvas id="countryChart" height="100"></canvas>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>IP</th>
+          <th>الدولة</th>
+          <th>الجهاز</th>
+          <th>المتصفح</th>
+          <th>الصفحات</th>
+          <th>المدة</th>
+          <th>الوقت</th>
+        </tr>
+      </thead>
+      <tbody id="visitorBody">
+        <!-- الزوار هنا -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Firebase & Chart -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import Chart from "https://cdn.jsdelivr.net/npm/chart.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBnA0eYHQbR8gfrkjXn0mEtwSh0MCHJpfU",
+      authDomain: "thelifegamesvisitors.firebaseapp.com",
+      databaseURL: "https://thelifegamesvisitors-default-rtdb.firebaseio.com",
+      projectId: "thelifegamesvisitors",
+      storageBucket: "thelifegamesvisitors.appspot.com",
+      messagingSenderId: "452655494921",
+      appId: "1:452655494921:web:7a713d52f612e3724385d8",
+      measurementId: "G-M0FV9P25PP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    let countryChart;
+
+    function isToday(dateString) {
+      const today = new Date();
+      const date = new Date(dateString);
+      return today.toDateString() === date.toDateString();
+    }
+
+    async function loadVisitorData() {
+      const tbody = document.getElementById("visitorBody");
+      const todayCountSpan = document.getElementById("todayCount");
+      const ctx = document.getElementById("countryChart").getContext("2d");
+
+      tbody.innerHTML = "";
+      todayCountSpan.textContent = "0";
+
+      const countryCounter = {};
+      const ipTracker = new Set();
+      let todayCount = 0;
+
+      const querySnapshot = await getDocs(collection(db, "visitors"));
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const ip = data.ip;
+        const timestamp = data.timestamp;
+
+        if (ip && isToday(timestamp) && !ipTracker.has(ip)) {
+          ipTracker.add(ip);
+          todayCount++;
+        }
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${data.ip || "-"}</td>
+          <td>${data.country || "-"}</td>
+          <td>${data.device || "-"}</td>
+          <td>${data.browser || "-"}</td>
+          <td>${data.pages?.join(" ➤ ") || "-"}</td>
+          <td>${data.duration || "0"}s</td>
+          <td>${data.timestamp || "-"}</td>
+        `;
+        tbody.appendChild(row);
+
+        if (data.country) {
+          countryCounter[data.country] = (countryCounter[data.country] || 0) + 1;
+        }
+      });
+
+      todayCountSpan.textContent = todayCount;
+
+      if (countryChart) countryChart.destroy();
+      countryChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: Object.keys(countryCounter),
+          datasets: [{
+            label: "عدد الزوار",
+            data: Object.values(countryCounter),
+            backgroundColor: "#00d0ff"
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: "الزوار حسب الدولة",
+              color: "#fff",
+              font: { size: 18 }
+            }
+          },
+          scales: {
+            x: { ticks: { color: "#fff" } },
+            y: { ticks: { color: "#fff" } }
+          }
+        }
+      });
+    }
+
+    // السماح فقط للمسؤول
+    onAuthStateChanged(auth, (user) => {
+      if (!user || user.email !== "admin@gmail.com") {
+        window.location.href = "/LoginSingUp.html";
+      } else {
+        loadVisitorData();
+      }
+    });
+
+    // زر تحديث البيانات
+    document.getElementById("refreshBtn").addEventListener("click", loadVisitorData);
+  </script>
+</body>
+</html>
