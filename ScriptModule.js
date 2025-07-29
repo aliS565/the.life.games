@@ -152,4 +152,33 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com
     }
   });
 
+const usersContainer = document.getElementById("users-list");
+  if (usersContainer) {
+    (async () => {
+      try {
+        const snapshot = await getDocs(collection(dbFS, "users"));
+        if (snapshot.empty) {
+          usersContainer.innerHTML = "<p>لا يوجد حسابات مسجلة بعد.</p>";
+          return;
+        }
 
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          const item = document.createElement("div");
+          item.innerHTML = `
+            <div style="padding: 10px; border-bottom: 1px solid #ccc;">
+              <strong>👤 الاسم:</strong> ${data.username || "غير محدد"}<br>
+              <strong>📧 الإيميل:</strong> ${data.email || "غير معروف"}<br>
+              <strong>🚻 النوع:</strong> ${data.gender || "غير محدد"}<br>
+              <strong>🕒 تم الإنشاء:</strong> ${new Date(data.createdAt).toLocaleString()}
+            </div>
+          `;
+          usersContainer.appendChild(item);
+        });
+      } catch (err) {
+        console.error("❌ خطأ في جلب بيانات المستخدمين:", err);
+        usersContainer.innerHTML = "<p>حدث خطأ أثناء تحميل الحسابات.</p>";
+      }
+    })();
+  }
+});
