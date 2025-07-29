@@ -180,5 +180,4 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com
       }
     })();
   }
-});
 
