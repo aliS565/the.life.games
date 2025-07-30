@@ -45,7 +45,7 @@ const browser = navigator.userAgent;
 const device = /Mobile|Android|iPhone/i.test(browser) ? "Mobile" : "Desktop";
 
 // جلب IP والموقع
-fetch("https://ipapi.co/json/")
+fetch("https://ipinfo.io/json?token=YOUR_TOKEN")
   .then((res) => res.json())
   .then(async (data) => {
     const ip = data.ip;
@@ -91,5 +91,5 @@ fetch("https://ipapi.co/json/")
       });
   })
   .catch((err) => {
-    console.error("❌ فشل جلب بيانات IP:", err);
+    console.error("❌ فشل جلب بيانات IP:", error);
   });
