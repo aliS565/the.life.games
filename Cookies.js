@@ -20,10 +20,7 @@ const firebaseConfig = {
   appId: "1:452655494921:web:7a713d52f612e3724385d8",
   measurementId: "G-M0FV9P25PP",
 };
-if (getApps().length === 0) {
-  initializeApp(firebaseConfig);
-}
-const app = initializeApp(firebaseConfig);
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 const db = getFirestore(app);
 
 // توليد userId وتخزينه في localStorage
