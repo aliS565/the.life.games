@@ -6,11 +6,13 @@ box-sizing: border-box;
 transition: all 0.3s ease;
 }
 html {
+    
     overflow-y: auto;
     scroll-behavior: smooth;
+    
 }
 body {
-background: linear-gradient(90deg,rgb(30, 30, 30), black);
+background: linear-gradient(45deg,rgb(9, 184, 143), black);
 background-attachment: fixed;
 background-position: center;
 background-repeat: no-repeat;
@@ -18,10 +20,10 @@ background-size: cover;
 padding: 0;
 margin: 0;
 align-items: center;
-justify-content: center;
+justify-content: space-between;
 display: flex;
 flex-direction: column;
-height: auto;
+height: 100%;
 gap: 10px;
 scroll-behavior: smooth;
 font-family: Roboto, sans-serif;
@@ -54,8 +56,9 @@ align-items: center;
 justify-content: space-between;
 width: max-content;
 height: 100%;
-background: rgb(45,45,45);
-box-shadow: 0 0 1px rgb(255, 255, 255);
+background: transparent;
+box-shadow: 0 0 5px rgb(255, 255, 255);
+
 border-radius: 0 6px 6px 6px;
 padding: 5px;
 gap: 3px;
@@ -113,6 +116,182 @@ padding: 0 15px;
 background: rgb(240,240,240, .26);
 }
 .NavButton:active {
+    background: rgb(240,240,240, .46);
+}
+header nav .Heeader-SettingButton {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 50%;
+    border: 2px solid rgba(240, 240, 240, 0.86);
+    margin: 0 5px;
+    cursor: pointer;
+    box-shadow: 0 0 3px black;
+    color: rgb(246, 246, 246);
+    font-size: 20px;
+}
+header .Heeader-SettingButton:hover {
+    background: rgb(240,240,240, .26);
+}
+header .Heeader-SettingButton:active {
+    background: rgb(240,240,240, .46);
+}
+.Wrap-Setting {
+    display: flex;
+    width: 340px;
+    height: 180px;
+    background: #333;
+    border-radius: 8px;
+    align-items: flex-start;
+    justify-content: space-between;
+    overflow: hidden;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 100%;
+    margin: auto;  
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+}
+.Wrap-Setting.active {
+    bottom: 0;
+    opacity: 1;
+    pointer-events: auto;
+  }
+.Wrap-Setting .Top-WrapSetting {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(240,240,240, .26);
+    padding: 0 5px;
+   
+}
+.Wrap-Setting .Top-WrapSetting span {
+    display: flex;
+    width: max-content;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    gap: 3px;
+    text-shadow: 0 0 3px black;
+}
+.Wrap-Setting .Top-WrapSetting .Close-WrapSettingBTN {
+    display: flex;
+    width: 26px;
+    height: 26px;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 50%;
+    border: 2px solid rgba(240, 240, 240, 0.26);
+    margin: 0 5px;
+    cursor: pointer;
+    box-shadow: 0 0 3px black;
+    color: rgb(246, 246, 246);
+}
+.Wrap-Setting .Top-WrapSetting .Close-WrapSettingBTN:hover {
+    background: rgb(240,240,240, .26);
+}
+.Wrap-Setting .Top-WrapSetting .Close-WrapSettingBTN:active {
+    background: rgb(240,240,240, .46);
+}
+.Wrap-Setting .Main-WrapSetting {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+.Wrap-Setting .Main-WrapSetting span {
+    font-weight: bolder;
+    text-shadow: 0 0 3px black;
+    font-size: 17px;
+}
+.Wrap-Setting .Main-WrapSetting label {
+    display: flex;
+    width: max-content;
+    height: 35px;
+    background: transparent;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    gap: 8px;
+    border: 2px solid rgb(240,240,240, .26);
+    box-shadow: 0 0 5px black;
+    backdrop-filter: blur(5px);
+}
+.Wrap-Setting .Main-WrapSetting label select {
+    background: transparent;
+    height: 100%;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bolder;
+    text-shadow: 0 0 3px black;
+    border-radius: 30px 0 0 30px;
+    cursor: pointer;
+    
+    position: relative;
+    padding: 0 8px;
+}
+.Wrap-Setting .Main-WrapSetting label select option {
+  background-color: #333;
+  color: #ffffff;
+  padding: 15px;
+  font-size: 16px;
+  border-bottom: 2px solid rgb(240,240,240, .26);
+}
+
+.Wrap-Setting .Main-WrapSetting label select option:checked{
+    background: #ffffff;
+    color: #333;
+}
+
+.Wrap-Setting .Main-WrapSetting label i {
+    width: 20px;
+}
+.Wrap-Setting .Bottom-WrapSetting {
+    display: flex;
+    width: 100%;
+    height: 35px;
+    background: transparent;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    border-top: 2px solid rgb(240,240,240, .26);
+    padding: 2px 5px;
+}
+.Wrap-Setting .Bottom-WrapSetting button[type='button'] {
+    display: flex;
+    width: max-content;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 8px;
+    border: 2px solid rgb(240,240,240, .26);
+    box-shadow:  0 0 5px black;
+    color: rgb(246,246,246);
+    outline: none;
+    font-weight: bolder;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.Wrap-Setting .Bottom-WrapSetting button[type='button']:hover {
+    background: rgb(240,240,240, .26);
+}
+.Wrap-Setting .Bottom-WrapSetting button[type='button']:active {
     background: rgb(240,240,240, .46);
 }
 #BTN-Menu {
@@ -677,15 +856,6 @@ opacity: 0;
     }
     .Game-Bord .Main-GMB .GM-DTLS .GM-About .GM-SWC .Two-TXT {
         font-size: 14px;
-    }
-    #BTN-TermsOfUse {
-    transform: scale(0);
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
     }
 }
 @media screen and (max-width: 700px) {
@@ -2575,18 +2745,17 @@ form .OrLoginSingUp p {
 .Wrap-AboutUs {
     display: flex;
     width: 90%;
-    height: 100%;
+    height: max-content;
     background: rgba(240, 240, 240, 0.26);
     border: 4px solid rgba(240, 240, 240, 0.26);
     border-radius: 6px;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 5px;
     transition: all 0.3s ease;
     box-shadow: 0 0 15px black, inset 0 0 8px black;
-    margin-bottom: 20px;
 }
 .Wrap-AboutUs .Top-AboutUs {
     display: flex;
@@ -2606,23 +2775,22 @@ form .OrLoginSingUp p {
     display: flex;
     width: 100%;
     height: 100%;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: center ;
+    justify-content: center;
     flex-direction: column;
     gap: 5px;
-    transition: all 0.3s ease;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia {
+.Wrap-AboutUs .Cover-Photo-SocialMedia {
     display: flex;
-    width: max-content;
-    height: max-content;
+    width: 100%;
+    height: 100%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 15px;
     margin-bottom: 5px;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .CoverPhoto {
+.Wrap-AboutUs  .Cover-Photo-SocialMedia .CoverPhoto {
     display: flex;
     width: 160px;
     height: 155px;
@@ -2631,7 +2799,7 @@ form .OrLoginSingUp p {
     justify-content: center;
     position: relative;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .CoverPhoto .OverLayPhoto {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .CoverPhoto .OverLayPhoto {
     display: block;
     width: 100%;
     height: 100%;
@@ -2654,7 +2822,7 @@ form .OrLoginSingUp p {
     }
 }
 
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .CoverPhoto .AboutUs-Photo {
+.Wrap-AboutUs  .Cover-Photo-SocialMedia .CoverPhoto .AboutUs-Photo {
     display: flex;
     width: 100%;
     height: 100%;
@@ -2667,13 +2835,13 @@ form .OrLoginSingUp p {
     justify-content: center;
     outline: 6px solid rgba(0, 0, 0, 0.26);
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .CoverPhoto .AboutUs-Photo span {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .CoverPhoto .AboutUs-Photo span {
     color: black;
     font-size: 72px;
     font-weight: bolder;
     font-family: stincel;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs {
     display: flex;
     width: max-content;
     height: max-content;
@@ -2686,7 +2854,7 @@ form .OrLoginSingUp p {
     gap: 10px;
     box-shadow: 0 0 10px black;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .TXT-SocialMedia {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .TXT-SocialMedia {
     display: flex;
     width: max-content;
     height: max-content;
@@ -2694,7 +2862,7 @@ form .OrLoginSingUp p {
     font-weight: bolder;
     text-shadow: 0 0 3px black;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links {
     display: flex;
     width: max-content;
     height: max-content;
@@ -2703,7 +2871,7 @@ form .OrLoginSingUp p {
     gap: 5px;
     background: none;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS {
     display: flex;
     width: max-content;
     height: max-content;
@@ -2720,7 +2888,7 @@ form .OrLoginSingUp p {
     overflow: hidden;
     transition: all 0.3s ease;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS .SCM-SpanText {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS .SCM-SpanText {
     display: flex;
     width: max-content;
     height: fit-content;
@@ -2732,7 +2900,7 @@ form .OrLoginSingUp p {
     color: white;
     
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS .SCM-SpanImage {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS .SCM-SpanImage {
     display: flex;
     width: 30px;
     height: 30px;
@@ -2745,18 +2913,18 @@ form .OrLoginSingUp p {
     transition: all 0.3s ease;
     font-size: 22px;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS:hover > .SCM-SpanImage {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS:hover > .SCM-SpanImage {
     box-shadow: 0 0 3px black;
     text-shadow: 0 0 3px black;
 }
-.Wrap-AboutUs .Main-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS:hover > .SCM-SpanText {
+.Wrap-AboutUs .Cover-Photo-SocialMedia .SocialMedia-AboutUs .SocialMedia-Cover-Links .About-SCM-BTNS:hover > .SCM-SpanText {
    text-shadow: 0 0 3px black;
 }
 .Wrap-AboutUs .Main-AboutUs .AboutUs-DetialsBar {
     display: flex;
     width: 100%;
-    height: 100%;
-    align-items: center;
+    height:  100%;
+    align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
     background: rgba(240, 240, 240, 0.26);
@@ -2834,12 +3002,12 @@ form .OrLoginSingUp p {
     display: flex;
     width: 100%;
     height: 100%;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
     background-color: transparent;
     transition: all 0.3s ease;
-    overflow: hidden;
+    overflow-y: hidden;
     gap: 8px;
 }
 .Wrap-AboutUs .Main-AboutUs .CoverDetailsBar.Hide{
