@@ -1,5 +1,6 @@
 // Firebase إعداد
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+// Firebase إعداد
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getFirestore,
   collection,
@@ -9,7 +10,6 @@ import {
   getDocs,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// إعداد firebaseConfig
 const firebaseConfig = {
   apiKey: "AIzaSyBnA0eYHQbR8gfrkjXn0mEtwSh0MCHJpfU",
   authDomain: "thelifegamesvisitors.firebaseapp.com",
