@@ -34,8 +34,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="NavButton" id="BTN-FormLoginSingUp" onclick="OpenWebsiteLoginSingUp()">Login<i class="fa-regular fa-circle-right"></i></div>
             <div class="NavButton" id="BTN-Menu" onclick="OpenMenu()">Menu<i class="fa-solid fa-bars"></i></div>
             <a href="javascript:window.location.reload(true)" class="NavButton" id="BTN-Refresh">Refresh<i class='fa-solid fa-refresh'></i></a>
+            <div class="Heeader-SettingButton"><i class="fa-solid fa-gear"></i></div>
             </nav>
             </header>
+            <div class="Wrap-Setting">
+                <div class="Top-WrapSetting">
+                    <span><i class="fa-solid fa-gear"></i>Setting Menu</span>
+                    <div class="Close-WrapSettingBTN">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+                <div class="Main-WrapSetting">
+                    <span>Background Color:</span>
+                    <label for="Select-BackgroundColor">
+                    <select name="Select-BackgroundColor" id="Select-BackgroundColor">
+                        <option value="1">Cyan & Black</option>
+                        <option value="2">Red & Black</option>
+                        <option value="3">Purple & Black</option>
+                        <option value="4">Lime & Black</option>
+                        <option value="5">Yellow & Black</option>
+                    </select>
+                    <i class="fa-solid fa-palette"></i>
+                </label>
+                </div>
+                <div class="Bottom-WrapSetting">
+                    <button type="button" id="ResetBTN-WrapSetting">Reset</button><button type="button" id="SaveBTN-WrapSetting">Save</button>
+                </div>
+            </div>
             <div class="Wrap-Menu" id="Wrap-Menu">
                 <div class="Top-Menu"><span>Menu Items</span></div>
               <a href="https://the-life-games.vercel.app/" class="Menu-BTNS" id="BTN-Refresh-Menu" target='_blank'><span>First Game</span><i class='fa-solid fa-refresh'></i></a>
@@ -113,5 +138,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="JavaScript.js"></script>
 <script type="module" src='ScriptModule.js'></script>
 <script type="module" src='Cookies.js'></script>
+<script src="Select-BackgroundColor.js"></script>
 </body>
 </html>
