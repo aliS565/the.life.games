@@ -46,7 +46,7 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com
   // ✅ تسجيل الزائر في Firestore
   (async () => {
     try {
-      const res = await fetch("https://ipapi.co/json/");
+      const res = await fetch("https://ipapi.io/json/");
       const ipData = await res.json();
 
       const userAgent = navigator.userAgent;
