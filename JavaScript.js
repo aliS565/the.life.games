@@ -130,19 +130,7 @@ function CloseSuccessForm() {
 function AboutUsShowHideDetials() {
     AboutUs_CoverDetialsBar.classList.add('Hide');
 }
-grecaptcha.ready(function () {
-  grecaptcha.execute('6Ldv8okrAAAAAJcDlwcpIXDKBBtqquak5q89HQpm', { action: 'submit' }).then(function (token) {
-    // يمكنك الآن إرسال هذا التوكين إلى Firebase App Check أو للسيرفر الخاص بك
-    console.log("reCAPTCHA token:", token);
 
-    // مثال: تخزين التوكين داخل input مخفي
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = "recaptcha_token";
-    input.value = token;
-    document.forms[0].appendChild(input);
-  });
-});
 function TransformToTop() {
   var WrapSuccessWork = document.querySelector('.WrapSuccessWork');
   WrapSuccessWork.style.transform = 'translateY(-100%)';
