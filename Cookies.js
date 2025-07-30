@@ -15,7 +15,7 @@ const firebaseConfig = {
   authDomain: "thelifegamesvisitors.firebaseapp.com",
   databaseURL: "https://thelifegamesvisitors-default-rtdb.firebaseio.com",
   projectId: "thelifegamesvisitors",
-  storageBucket: "thelifegamesvisitors.firebasestorage.app",
+  storageBucket: "thelifegamesvisitors.appspot.com",
   messagingSenderId: "452655494921",
   appId: "1:452655494921:web:7a713d52f612e3724385d8",
   measurementId: "G-M0FV9P25PP",
@@ -32,7 +32,7 @@ if (!userId) {
 }
 
 // التحقق من آخر زيارة في localStorage
-const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+const today = new Date().toISOString().split("T")[0];
 const lastVisit = localStorage.getItem("lastVisitDate");
 
 // عداد الضغطات
@@ -41,16 +41,25 @@ document.addEventListener("click", () => {
   clicks++;
 });
 
+// نوع الجهاز والمتصفح
 const browser = navigator.userAgent;
 const device = /Mobile|Android|iPhone/i.test(browser) ? "Mobile" : "Desktop";
 
+// تتبع الصفحات
+let visitedPages = JSON.parse(localStorage.getItem("visitedPages") || "[]");
+const currentPage = window.location.pathname;
+if (!visitedPages.includes(currentPage)) {
+  visitedPages.push(currentPage);
+  localStorage.setItem("visitedPages", JSON.stringify(visitedPages));
+}
+
 // جلب IP والموقع
-fetch("https://ipinfo.io/json?token=YOUR_TOKEN")
+fetch("https://ipinfo.io/json?token=YOUR_TOKEN") // ← ضع التوكن الحقيقي هنا
   .then((res) => res.json())
   .then(async (data) => {
     const ip = data.ip;
 
-    // تحقق من تكرار نفس الـ IP اليوم في قاعدة البيانات
+    // تحقق من التكرار
     const q = query(collection(db, "Cookies"), where("ip", "==", ip));
     const snapshot = await getDocs(q);
 
@@ -67,9 +76,7 @@ fetch("https://ipinfo.io/json?token=YOUR_TOKEN")
       return;
     }
 
-    // إذا لم تُسجل اليوم، خزّن التاريخ وادفع البيانات
     localStorage.setItem("lastVisitDate", today);
-
     const visitTime = new Date().toISOString();
 
     addDoc(collection(db, "Cookies"), {
@@ -79,17 +86,18 @@ fetch("https://ipinfo.io/json?token=YOUR_TOKEN")
       ip: ip,
       browser: browser,
       device: device,
-      country: data.country_name,
+      country: data.country,
       city: data.city,
       region: data.region,
+      pagesVisited: visitedPages, // ✅ الصفحات التي زارها
     })
       .then(() => {
-        console.log("✅ تم حفظ زيارة المستخدم اليوم في Firestore");
+        console.log("✅ تم حفظ زيارة المستخدم اليوم مع الصفحات");
       })
       .catch((error) => {
         console.error("❌ خطأ في الحفظ:", error);
       });
   })
   .catch((err) => {
-    console.error("❌ فشل جلب بيانات IP:", error);
+    console.error("❌ فشل جلب بيانات IP:", err);
   });
