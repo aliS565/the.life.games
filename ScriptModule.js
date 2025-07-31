@@ -1,52 +1,60 @@
-
+// استيراد Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-import { getFirestore, collection, getDocs, addDoc, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  setDoc,
+  doc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js";
-  // ✅ إعداد Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyBnA0eYHQbR8gfrkjXn0mEtwSh0MCHJpfU",
-    authDomain: "thelifegamesvisitors.firebaseapp.com",
-    databaseURL: "https://thelifegamesvisitors-default-rtdb.firebaseio.com",
-    projectId: "thelifegamesvisitors",
-    storageBucket: "thelifegamesvisitors.firebasestorage.app",
-    messagingSenderId: "452655494921",
-    appId: "1:452655494921:web:7a713d52f612e3724385d8",
-    measurementId: "G-M0FV9P25PP"
-  };
 
-  // ✅ تهيئة Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const dbRTDB = getDatabase(app);
-  const dbFS = getFirestore(app);
-  const auth = getAuth(app);
-//onAuthStateChanged(auth, (user) => {
- // if (!user) {
-  //  window.location.href = "/";
- // }
-// });
+// إعداد Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBnA0eYHQbR8gfrkjXn0mEtwSh0MCHJpfU",
+  authDomain: "thelifegamesvisitors.firebaseapp.com",
+  databaseURL: "https://thelifegamesvisitors-default-rtdb.firebaseio.com",
+  projectId: "thelifegamesvisitors",
+  storageBucket: "thelifegamesvisitors.appspot.com", // ✅ تصحيح هنا
+  messagingSenderId: "452655494921",
+  appId: "1:452655494921:web:7a713d52f612e3724385d8",
+  measurementId: "G-M0FV9P25PP"
+};
 
-  // ✅ تفعيل App Check (reCAPTCHA v3)
-  // ✅ تسجيل الزائر في Realtime Database
-  const visitorsRef = ref(dbRTDB, 'visitors');
-  push(visitorsRef, { timestamp: new Date().toISOString() });
+// تهيئة Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const dbRTDB = getDatabase(app);
+const dbFS = getFirestore(app);
+const auth = getAuth(app);
 
-  // ✅ عرض عدد الزوار في العنصر
-  window.addEventListener("DOMContentLoaded", () => {
-    onValue(visitorsRef, (snapshot) => {
-      const count = snapshot.exists() ? Object.keys(snapshot.val()).length : 0;
-      const el = document.getElementById("visitor-count");
-      if (el) el.textContent = count;
-    });
+// ✅ تسجيل الزائر في Realtime Database
+const visitorsRef = ref(dbRTDB, 'visitors');
+push(visitorsRef, { timestamp: new Date().toISOString() });
+
+// ✅ تشغيل الكود بعد تحميل الصفحة
+window.addEventListener("DOMContentLoaded", () => {
+  // عرض عدد الزوار
+  onValue(visitorsRef, (snapshot) => {
+    const count = snapshot.exists() ? Object.keys(snapshot.val()).length : 0;
+    const el = document.getElementById("visitor-count");
+    if (el) el.textContent = count;
   });
 
-  // ✅ تسجيل الزائر في Firestore
+  // تسجيل بيانات الزائر في Firestore
   (async () => {
     try {
-      const res = await fetch("https://ipapi.io/json/");
+      const res = await fetch("https://ipapi.co/json/"); // ✅ تم التصحيح
       const ipData = await res.json();
 
       const userAgent = navigator.userAgent;
@@ -88,68 +96,68 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com
     }
   })();
 
-  // ✅ تسجيل حساب
-  window.addEventListener("DOMContentLoaded", () => {
-    const signUpForm = document.getElementById('FormSingUp');
-    const loginForm = document.getElementById('FormLogIn');
-    const submitSignUp = document.getElementById('SubmitButtonSingUp');
-    const submitLogin = document.getElementById('SubmitButtonLogin');
+  // تسجيل حساب
+  const signUpForm = document.getElementById('FormSingUp');
+  const loginForm = document.getElementById('FormLogIn');
+  const submitSignUp = document.getElementById('SubmitButtonSingUp');
+  const submitLogin = document.getElementById('SubmitButtonLogin');
 
-    // 🟢 إنشاء حساب جديد
-    if (submitSignUp) {
-      submitSignUp.addEventListener('click', async (event) => {
-        event.preventDefault();
+  // إنشاء حساب جديد
+  if (submitSignUp) {
+    submitSignUp.addEventListener('click', async (event) => {
+      event.preventDefault();
 
-        const email = document.getElementById('emailSignUp')?.value.trim();
-        const password = document.getElementById('password')?.value;
-        const gender = signUpForm?.querySelector('input[name="gender"]:checked')?.value;
+      const email = document.getElementById('emailSignUp')?.value.trim();
+      const password = document.getElementById('password')?.value;
+      const gender = signUpForm?.querySelector('input[name="gender"]:checked')?.value;
 
-        if (!email || !password || !gender) {
-          alert("❌ من فضلك أكمل كل الحقول.");
-          return;
-        }
+      if (!email || !password || !gender) {
+        alert("❌ من فضلك أكمل كل الحقول.");
+        return;
+      }
 
-        try {
-          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-          const user = userCredential.user;
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
 
-          await setDoc(doc(dbFS, "users", user.uid), {
-            email,
-            gender,
-            createdAt: new Date().toISOString()
-          });
+        await setDoc(doc(dbFS, "users", user.uid), {
+          email,
+          gender,
+          createdAt: new Date().toISOString()
+        });
 
-          alert("✅ تم إنشاء الحساب بنجاح");
-          window.location.href = "https://the-life-games.vercel.app/";
-        } catch (error) {
-          alert("❌ " + error.message);
-        }
-      });
-    }
+        alert("✅ تم إنشاء الحساب بنجاح");
+        window.location.href = "https://the-life-games.vercel.app/";
+      } catch (error) {
+        alert("❌ " + error.message);
+      }
+    });
+  }
 
-    // 🟢 تسجيل دخول
-    if (loginForm) {
-      loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-       const email = loginForm.querySelector('#emailLogin')?.value.trim();
-        const password = loginForm.querySelector('input[name="upass"]')?.value;
+  // تسجيل الدخول
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = loginForm.querySelector('#emailLogin')?.value.trim();
+      const password = loginForm.querySelector('input[name="upass"]')?.value;
 
-        if (!email || !password) {
-          alert("❌ من فضلك أدخل البريد وكلمة المرور");
-          return;
-        }
+      if (!email || !password) {
+        alert("❌ من فضلك أدخل البريد وكلمة المرور");
+        return;
+      }
 
-        try {
-          const userCredential = await signInWithEmailAndPassword(auth, email, password);
-          alert("✅ تم تسجيل الدخول بنجاح");
-          window.location.href = "https://the-life-games.vercel.app/";
-        } catch (error) {
-          alert("❌ " + error.message);
-        }
-      });
-    }
-  });
- const usersContainer = document.getElementById("users-list");
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        alert("✅ تم تسجيل الدخول بنجاح");
+        window.location.href = "https://the-life-games.vercel.app/";
+      } catch (error) {
+        alert("❌ " + error.message);
+      }
+    });
+  }
+
+  // عرض المستخدمين المسجلين في صفحة الإدارة
+  const usersContainer = document.getElementById("users-list");
   if (usersContainer) {
     (async () => {
       try {
@@ -178,4 +186,4 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com
       }
     })();
   }
-
+});
