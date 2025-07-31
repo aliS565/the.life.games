@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const saved = localStorage.getItem("bg-select");
   if (saved && gradients[saved]) {
     body.style.background = gradients[saved];
+    wrapSetting.style.background = gradients[saved];
     if (select) select.value = saved;
   }
 
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const value = select.value;
       if (gradients[value]) {
         body.style.background = gradients[value];
+        wrapSetting.style.background = gradients[saved];
       }
     });
   }
@@ -42,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     resetBtn.addEventListener("click", function () {
       select.value = "1";
       body.style.background = gradients["1"];
+      wrapSetting.style.background = gradients["1"];
       localStorage.removeItem("bg-select");
     });
   }
