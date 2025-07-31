@@ -1,5 +1,4 @@
-// Firebase إعداد
-// Firebase إعداد
+// إعداد Firebase
 import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getFirestore,
@@ -52,8 +51,8 @@ if (!visitedPages.includes(currentPage)) {
   localStorage.setItem("visitedPages", JSON.stringify(visitedPages));
 }
 
-// جلب IP والموقع
-fetch("https://ipinfo.io/json?token=YOUR_TOKEN") // ← ضع التوكن الحقيقي هنا
+// ✅ استبدال ipinfo.io بـ ipapi.co (لا تحتاج Token)
+fetch("https://ipapi.co/json/")
   .then((res) => res.json())
   .then(async (data) => {
     const ip = data.ip;
@@ -85,10 +84,10 @@ fetch("https://ipinfo.io/json?token=YOUR_TOKEN") // ← ضع التوكن الح
       ip: ip,
       browser: browser,
       device: device,
-      country: data.country,
+      country: data.country_name,
       city: data.city,
       region: data.region,
-      pagesVisited: visitedPages, // ✅ الصفحات التي زارها
+      pagesVisited: visitedPages,
     })
       .then(() => {
         console.log("✅ تم حفظ زيارة المستخدم اليوم مع الصفحات");
